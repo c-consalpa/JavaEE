@@ -46,7 +46,10 @@ public class Forward extends HttpServlet {
             mUser user = (mUser) request.getAttribute("user");
             out.println("context is : " + getServletContext().getContextPath());
             out.println("user:" + user + "<br>");
-            out.println("user name is :" + user.getName());
+            if (user != null) {
+                out.println("user name is :" + user.getName());
+            }
+            
             
             
             out.println("</body>");

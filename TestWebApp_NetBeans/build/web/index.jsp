@@ -13,7 +13,8 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <a href="test?param1=value1&param1=value2&param1=value3&test=qwe">GET link</a> <br>
+        
+        <a href="test?param1=value1&param1=value2&param1=value3&test=qwe">test</a> <br>
         <a href="learnJSP">Learn JSP</a><br>
         
         

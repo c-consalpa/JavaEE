@@ -1,6 +1,6 @@
 <%-- 
-    Document   : tes_JSP
-    Created on : Dec 18, 2019, 4:06:23 PM
+    Document   : forwarded.jsp
+    Created on : Jan 27, 2020, 4:40:54 PM
     Author     : c-consalpa
 --%>
 
@@ -12,11 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        
-        <a href="test?param1=value1&param1=value2&param1=value3&test=qwe">test</a> <br>
-        <a href="learnJSP">Learn JSP</a><br>
-        
-        
+        <h1>You have fowarded</h1>
+        <p>
+            User Name:<br>
+            ${user.name}
+        </p>
     </body>
 </html>

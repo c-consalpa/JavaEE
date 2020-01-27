@@ -81,23 +81,14 @@ public class TestServlet extends HttpServlet {
 //            System.out.println(f.length());
 
 
-out.println("redirecting");
-
 
 mUser user = new mUser();
 user.setName("testName");
-
 request.setAttribute("user", user);
 
 
 ServletContext ctx = getServletContext();
-ctx.getRequestDispatcher("/redirect.jsp").forward(request, response);
-
-
-
-            
-            out.println("</body>");
-            out.println("</html>");
+ctx.getRequestDispatcher("/forwarded.jsp").forward(request, response);
 
     }
     }

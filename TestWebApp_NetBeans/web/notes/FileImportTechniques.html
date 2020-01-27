@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <h1>3 ways to include files:</h1>
+    
+    
+	<ul>
+		<li>
+                    <b>Compile-time</b> with <%include>:
+			&#x3C;%@ include file = &#x22;/includes/header.html&#x22; %&#x3E;
+		</li>
+                <li><b>run-time</b> with include action:
+                    &#x3C;jsp:include page=&#x22;header.html&#x22; /&#x3E;<br>
+                        // points to relative path of the included file
+			
+		</li>
+		<li>
+			Via JSTL import tag:
+                        &#x3C;c:import url=&#x22;header.html&#x22; /&#x3E;<br>
+                        
+                        can reference to include files over the Internet
+		</li>
+	</ul>
+</body>
+</html>

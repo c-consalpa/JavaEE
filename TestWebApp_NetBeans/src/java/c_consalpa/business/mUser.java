@@ -11,9 +11,11 @@ package c_consalpa.business;
  */
 public class mUser {
     private String name;
+    private String email;
 
     public mUser() {
         this.name = "";
+        this.email="some.defaultemail@cac.com";
     }
     
     public String getName() {
@@ -23,5 +25,14 @@ public class mUser {
     public void setName(String nm) {
         this.name = nm;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
     
 }
