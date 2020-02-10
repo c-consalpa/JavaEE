@@ -5,11 +5,15 @@
  */
 package c_consalpa;
 
+import Utils.CookieUtils;
+
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.HttpCookie;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,18 +29,61 @@ static int counter = 0;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("Request received. Session: " + request.getSession().getId());
+        counter++;
+        System.out.println("Counter :" + counter);
+
+        
+//        HttpSession session = request.getSession();
+//        request.setAttribute("ses", session.getId());
+//        request.setAttribute("cnt", Integer.toString(counter));
+////        Cookies:
+//        System.out.println("Request has the following cookies:");
+//        Cookie[] cookies = request.getCookies();
+//        if (cookies != null) {
+//        for (Cookie c : cookies) {
+//            if (c.getName().equals("customCookie")) counter++;
+//            System.out.print(c.getName() + " : ");
+//            System.out.println(c.getValue());
+//            System.out.println("****");
+//        }
+//        }
+//        request.setAttribute("cnt", Integer.toString(counter));
+//        System.out.println("Setting custom cookie");
+//        Cookie cookie = new Cookie("customCookie", "abc");
+//        response.addCookie(cookie);
+Cookie[] cookies = request.getCookies();
+
+
+
+
         
         
-        HttpSession session = request.getSession();
-        if (session.isNew()) {
-            System.out.println("new session detected");
-        } else {
-            counter++;
+        
+        
+        
+               if (counter > 3) {
+//Utils.CookieUtils.invalidateCookies(request.getCookies());
+  if (cookies != null) {
+            for(Cookie c: cookies) {
+                System.out.println("invalidating: " + c.getName());
+               c.setMaxAge(0);
+              
+               response.addCookie(c);
+            }
         }
+        } else {
+        Cookie cookie1 = new Cookie("customCookie1", "abc");
+        response.addCookie(cookie1);
+        Cookie cookie2 = new Cookie("customCookie2", "abc1");
+        response.addCookie(cookie2);
+        Cookie cookie3 = new Cookie("customCookie3", "3");
+        response.addCookie(cookie3);
+               }
         
-        request.setAttribute("ses", session.getId());
-        request.setAttribute("cnt", Integer.toString(counter));
-        
+               
+               
+               System.out.println(Utils.CookieUtils.listAllCookies(cookies));
          RequestDispatcher dsptchr = request.getRequestDispatcher("TestSessionView.jsp");
          dsptchr.forward(request, response);
         

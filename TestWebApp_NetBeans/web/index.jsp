@@ -16,6 +16,7 @@
         
         <a href="test?param1=value1&param1=value2&param1=value3&test=qwe">test</a> <br>
         <a href="learnJSP">Learn JSP</a><br>
+        <a href="TestSessionController">TestSessionController</a><br>
         
         
     </body>

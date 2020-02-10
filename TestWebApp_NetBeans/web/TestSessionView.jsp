@@ -4,6 +4,7 @@
     Author     : c-consalpa
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,5 +16,13 @@
         <h1>Hello World!</h1>
         <p>HTTPSession ID: ${ses}</p>
         <p>count: ${cnt}</p>
+        
+        <h2>Cookies</h2>
+        <h3>Getting via JSTL:</h3>
+        <c:forEach var="c" items="${cookie}">
+            <p>${c.value.name} = ${c.value.value}</p>
+        </c:forEach>
+            
+        <h3>\${cookie.customCookie1.value}: ${cookie.customCookie1.value}</h3>
     </body>
 </html>
