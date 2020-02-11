@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GolovachEE_WEB.iml" filepath="$PROJECT_DIR$/GolovachEE_WEB.iml" />
       <module fileurl="file://$PROJECT_DIR$/Servlets3/Servlets3.iml" filepath="$PROJECT_DIR$/Servlets3/Servlets3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Servlets4/Servlets4.iml" filepath="$PROJECT_DIR$/Servlets4/Servlets4.iml" />
     </modules>
   </component>
 </project>
