@@ -13,7 +13,7 @@
   <body>
   <h1>MVC Pattern, Session, Cookies</h1>
   <ul>
-    <li></li>
+    <li><a href="/product.do">products</a></li>
     <li></li>
     <li></li>
   </ul>

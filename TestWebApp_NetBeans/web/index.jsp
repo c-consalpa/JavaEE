@@ -12,12 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        
-        <a href="test?param1=value1&param1=value2&param1=value3&test=qwe">test</a> <br>
+        <h1>Murach's Servlets & JSP</h1>
+        <a href="test?param1=value1&param1=value2&param1=value3&test=qwe">test</a><br>
         <a href="learnJSP">Learn JSP</a><br>
         <a href="TestSessionController">TestSessionController</a><br>
-        
-        
+        <a href="TestCart_Demo.jsp">TestCart_Demo.jsp</a><br>       
     </body>
 </html>

@@ -1,21 +1,20 @@
 <%--
   Created by IntelliJ IDEA.
   User: c-consalpa
-  Date: 2/5/2020
-  Time: 4:14 PM
+  Date: 2/19/2020
+  Time: 5:37 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>Servlets #3</title>
+    <title>$Title$</title>
   </head>
   <body>
-  <h1>MVC Pattern, Session, Cookies</h1>
-  <ul>
-    <li><a href="/product.do">products</a></li>
-    <li></li>
-    <li></li>
-  </ul>
+  <a href="productsAll.do">products</a><br>
+  <a href="products.do?id=0">Sugar</a><br>
+  <a href="products.do?id=1">Bread</a><br>
+  <a href="products.do?id=2">Butter</a><br>
+
   </body>
 </html>

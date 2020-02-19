@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package c_consalpa;
-
 import Utils.CookieUtils;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.HttpCookie;
@@ -54,36 +48,26 @@ static int counter = 0;
 //        response.addCookie(cookie);
 Cookie[] cookies = request.getCookies();
 
-
-
-
-        
-        
-        
-        
-        
-               if (counter > 3) {
+if (counter % 3 == 0) {
 //Utils.CookieUtils.invalidateCookies(request.getCookies());
   if (cookies != null) {
             for(Cookie c: cookies) {
                 System.out.println("invalidating: " + c.getName());
                c.setMaxAge(0);
-              
                response.addCookie(c);
             }
         }
         } else {
-        Cookie cookie1 = new Cookie("customCookie1", "abc");
-        response.addCookie(cookie1);
-        Cookie cookie2 = new Cookie("customCookie2", "abc1");
-        response.addCookie(cookie2);
-        Cookie cookie3 = new Cookie("customCookie3", "3");
-        response.addCookie(cookie3);
-               }
-        
-               
-               
-               System.out.println(Utils.CookieUtils.listAllCookies(cookies));
+            Cookie cookie1 = new Cookie("customCookie1", "abc");
+            response.addCookie(cookie1);
+            Cookie cookie2 = new Cookie("customCookie2", "abc1");
+            response.addCookie(cookie2);
+            Cookie cookie3 = new Cookie("customCookie3", "3");
+            response.addCookie(cookie3);
+        }
+             
+         System.out.println(Utils.CookieUtils.listAllCookies(cookies));
+         
          RequestDispatcher dsptchr = request.getRequestDispatcher("TestSessionView.jsp");
          dsptchr.forward(request, response);
         

@@ -1,8 +1,6 @@
 <component name="libraryTable">
-  <library name="servlet-api">
+  <library name="jstl-impl">
     <CLASSES>
-      <root url="jar://D:/Tomcat/ApacheTomcat8/lib/servlet-api.jar!/" />
-      <root url="jar://D:/Downloads/jstl-api.jar/jstl-api.jar!/" />
       <root url="jar://D:/Downloads/jstl-impl.jar/jstl-impl.jar!/" />
     </CLASSES>
     <JAVADOC />
