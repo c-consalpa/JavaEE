@@ -33,7 +33,7 @@ public class TestCart_Demo1 extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("TestCart_Demo1.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("Cart/TestCart_Demo1.jsp");
         requestDispatcher.forward(request, response);
     }
 

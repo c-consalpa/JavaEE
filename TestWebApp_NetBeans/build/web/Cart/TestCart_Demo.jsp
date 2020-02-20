@@ -1,8 +1,4 @@
-<%-- 
-    Document   : cartSample
-    Created on : Feb 15, 2020, 4:35:24 PM
-    Author     : c-consalpa
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -10,7 +6,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="styles/main.css">
+        <link rel="stylesheet" type="text/css" href="../styles/main.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>First Cart</title>
     </head>
@@ -34,7 +30,7 @@
                 </tr>   
     </table>
     
-    <c:import url="includes/cart.jsp"/>
+    <c:import url="/includes/cart.jsp"/>
     
     </body>
 </html>

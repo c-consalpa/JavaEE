@@ -1,22 +1,30 @@
 package Models;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Cart {
-    private Map<Product, Integer> itemsInCart = new HashMap<>();
+    public Map<Product, Integer> itemsInCart = new HashMap<>();
 
-
-    public Cart(Product product) {
-        itemsInCart = new HashMap<>();
-        itemsInCart.put(product, 1);
+    public Map<Product, Integer> getItemsInCart() {
+        return itemsInCart;
     }
 
-    public boolean add(Product product) {
+    public Cart add(Product product, HttpSession session) {
+        int currentProductCount = 0;
         if (itemsInCart.containsKey(product)) {
-            itemsInCart.put(product, itemsInCart.get(product)  + 1);
+            currentProductCount = itemsInCart.get(product);
+            itemsInCart.put(product, ++currentProductCount);
+        } else {
+            itemsInCart.put(product, ++currentProductCount);
         }
-        return true;
+        return this;
+    }
+
+
+    public Map<Product, Integer> getCurrentItems() {
+        return this.itemsInCart;
     }
 
     @Override

@@ -29,15 +29,23 @@ public class Product {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return id == product.id &&
-                Objects.equals(value, product.value);
+       if (this.value.equals(((Product) o).value)) {
+           return true;
+       } else {
+           return false;
+       }
     }
 
     @Override
     public int hashCode() {
         return value.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", value='" + value + '\'' +
+                '}';
     }
 }

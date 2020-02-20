@@ -14,6 +14,6 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <c:import url="includes/cart.jsp"/>
+        <c:import url="/includes/cart.jsp"/>
     </body>
 </html>

@@ -36,34 +36,23 @@ public class ProductController_Cart extends HttpServlet {
         if (product != null) {
             request.setAttribute("product", product);
             if (add != null) {
-                put2Cart(product, request.getSession());
+//                add to cart:
+                HttpSession ses = request.getSession();
+                Cart cart = (Cart) ses.getAttribute("cart");
+                if (cart == null) {
+                    cart = new Cart();
+                }
+                ses.setAttribute("cart", cart.add(product, ses));
             }
         }
 
-        // cart:
-        if (add != null) {
-            HttpSession ses = request.getSession();
-            Cart cart = (Cart) ses.getAttribute("cart");
-            if (cart == null) {
-                cart = new Cart(product);
-            }
 
-        }
 
 
         requestDispatcher.forward(request, response);
 
     }
 
-    private void put2Cart(Product product, HttpSession session) {
 
-            HttpSession ses = session;
-            Cart cart = (Cart) ses.getAttribute("cart");
-            if (cart == null) {
-                cart = new Cart(product);
-            }
-            cart.add(product);
-        System.out.println(cart);
-        }
 
 }

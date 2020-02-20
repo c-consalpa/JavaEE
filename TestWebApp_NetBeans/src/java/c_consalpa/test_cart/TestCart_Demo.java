@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package c_consalpa.test_cart;
 
-
 import c_consalpa.business.mCart;
-
 import java.io.IOException;
-import java.util.HashSet;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,18 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author c-consalpa
- */
-@WebServlet(name = "TestCart_Demo", urlPatterns = {"/TestCart_Demo"})
+
+@WebServlet(name = "TestCart_Demo", urlPatterns = {"/Cart/TestCart_Demo"})
 public class TestCart_Demo extends HttpServlet {
 private final String SESSION_ATTR_CART = "mcart";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("TestCart_Demo.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Cart/TestCart_Demo.jsp");
         Integer productId = Integer.valueOf(request.getParameter("id"));
         String cartAction = request.getParameter("act");
         
@@ -68,19 +57,6 @@ private final String SESSION_ATTR_CART = "mcart";
                 System.out.println(cart);
         
 
-            
-         
-        
-        
-        
-        
-        
-        
-        
-        
-
-        
-        
         
         requestDispatcher.forward(request, response);
         
@@ -116,9 +92,5 @@ private final String SESSION_ATTR_CART = "mcart";
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private void processCartAction() {
-        
-    }
 
 }
