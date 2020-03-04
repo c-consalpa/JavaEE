@@ -66,14 +66,43 @@
                         </c:forEach>
                     </td>
                 </tr>
-                
-                
-                
+                <tr>
+                    <td>Custom Tag (no body): 
+                        &lt;test:currentDate&gt;</td>
+                    <td><test:currentDate></test:currentDate></td>
+                </tr>
+                  <tr>
+                    <td>
+                        ifWeekday:
+                    </td>
+                    <td>
+                    <test:ifWeekDay>today is a working day</test:ifWeekDay>
+                    </td>
+                    </tr>
+                 <tr>
+                    <td>
+                        Custom tag with attribute:
+                    </td>
+                    <td>
+                        <test:AttributeTag count="12"></test:AttributeTag>
+                    </td>
+                </tr>
+                   <tr>
+                    <td>
+                        Iterable body tag;
+                    </td>
+                 <td style="border: 1px solid red">
+                    <test:mIterableTag>
+                        <p>${productId}:${productValue}</p>
+                        <hr>
+                    </test:mIterableTag>
+                    </td>
+                </tr>
             </tbody>
         </table>
         
 
-    <test:currentDate></test:currentDate>
+    
         
             
     </body>

@@ -7,11 +7,12 @@ package c_consalpa.JSPs;
 
 import c_consalpa.business.mProduct;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -57,6 +58,21 @@ public class LearnJSTL extends HttpServlet {
         
         request.setAttribute("script", script);
         request.setAttribute("testMap", testMap);
+        
+        mProduct prod0 = new mProduct();
+        prod0.setId(6874);
+        prod0.setValue("asasasas");
+        mProduct prod1 = new mProduct();
+        prod1.setId(9999);
+        prod1.setValue("xyz");
+        List<mProduct> lst = new ArrayList<>();
+        lst.add(prod0);
+        lst.add(prod1);
+        request.setAttribute("dataList", lst);
+        
+        
+        
+        
         
         
         this.getServletContext().getRequestDispatcher("/LearnJSTL.jsp").forward(request, response);

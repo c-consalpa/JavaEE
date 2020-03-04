@@ -1,4 +1,4 @@
-package c_consalpa.JSPs;
+package customJSTLTags;
 
 import java.text.DateFormat;
 import java.util.Date;

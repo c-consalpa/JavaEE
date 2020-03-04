@@ -22,6 +22,9 @@
             <input type="Submit" value="Send hiddden field"/>
             <input type="hidden" value="hidValue" name="hiddenInput"/>
         </form>
-        <a href="LearnJSTL">LearnJSTL</a>
+        <a href="LearnJSTL">LearnJSTL</a><br>
+        <a href="TestServlet_DB">Learn DB</a>
+        
+        
     </body>
 </html>
