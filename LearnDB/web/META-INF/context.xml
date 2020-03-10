@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/LearnDB"/>
+<Context path="/LearnDB">
+    <Resource name="jdbc/c_consalpa" auth="Container" 
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/test?autoReconnect=true"
+              username="netbeans_test_ac" password="netbeans_test_ac"
+              maxActive="100" maxIdle="30" maxWait="10000"
+              logAbandoned="true" removeAbandoned="true"
+              removeAbandonedTimeout="60" type="javax.sql.DataSource"
+    />
+</Context>
