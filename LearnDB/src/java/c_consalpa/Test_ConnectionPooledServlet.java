@@ -6,13 +6,10 @@
 package c_consalpa;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,23 +20,22 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author c-consalpa
  */
-@WebServlet(name = "Test_ConnectionPooledServlet", urlPatterns = {"/Test_ConnectionPooledServlet"})
+
 public class Test_ConnectionPooledServlet extends HttpServlet {
 
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+       
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
-        
         
         try {
             Statement stmnt = connection.createStatement();
             ResultSet resultSet = stmnt.executeQuery("SELECT * FROM test.xes_test");
             while (resultSet.next()) {
-                System.out.println(resultSet.getInt(1) + " : " + resultSet.getString(2));
+                System.out.println(resultSet.getRow());
                 
             }
         } catch (SQLException ex) {
