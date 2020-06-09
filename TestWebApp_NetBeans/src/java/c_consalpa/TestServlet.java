@@ -1,8 +1,12 @@
 package c_consalpa;
 
 import c_consalpa.business.mUser;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.Enumeration;
+import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,29 +21,29 @@ public class TestServlet extends HttpServlet {
 //Get parameters Map
 //            Map<String, String[]> parameters = request.getParameterMap();
 //            for (Map.Entry<String, String[]> p : parameters.entrySet()) {
-//                out.println("PARAM : " + p.getKey());
-//                out.println("VALUE: " + Arrays.toString(p.getValue()));
+//                System.out.println("PARAM : " + p.getKey());
+//                System.out.println("VALUE: " + Arrays.toString(p.getValue()));
 //            }
-
 
 //            List Headers:
 //             for (Enumeration e = request.getHeaderNames(); e.hasMoreElements();) {
-//                  
-//                    out.println(e.nextElement());
-//                    out.println("<br />");
+//                 String header = e.nextElement().toString();
+//                    System.out.println(header + " : " + request.getHeader(header));
+//                    
 //             }
        
 
 //  Locate file on server's file system
-//String str = getServletContext().getRealPath("/WEB-INF/1.txt");
-//File f = new File(str);
-//            System.out.println(f.length());
+// String str = getServletContext().getRealPath("/WEB-INF/1.txt");
+// File f = new File(str);
+//        System.out.println(f.getPath());
+// System.out.println(f.length());
 
 
-        String param_hid = request.getParameter("param_hid");
-        System.out.println("param_hid: " + param_hid);
-        String hiddenInput = request.getParameter("hiddenInput");
-        System.out.println("param_hid:" + hiddenInput);
+//        String param_hid = request.getParameter("param_hid");
+//        System.out.println("param_hid: " + param_hid);
+//        String hiddenInput = request.getParameter("hiddenInput");
+//        System.out.println("param_hid:" + hiddenInput);
 
 
 mUser user = new mUser();
@@ -52,7 +56,6 @@ ServletContext ctx = getServletContext();
 ctx.getRequestDispatcher("/forwarded.jsp").forward(request, response);
 
 }
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
