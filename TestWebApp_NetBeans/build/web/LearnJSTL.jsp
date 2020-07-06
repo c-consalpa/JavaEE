@@ -6,6 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Learn JSP</title>
+        
     </head>
     <body>
         <h1>LearnJSTL</h1>
@@ -18,9 +19,10 @@
 &#x3C;c:out value=&#x22;&#x27;\${script}&#x27;&#x22;&#x3E;&#x3C;/c:out&#x3E;&#x3C;br&#x3E<br>
                     </td>
                     <td style="border: 1px solid red">
-<c:out value="${cookie}">test</c:out><br>
-<c:out value="${script}"></c:out><br>
-<c:out value="'${script}'"></c:out><br>
+                <c:out value="${cookie}">test</c:out><br>
+                <c:out value="${sc}"></c:out><br>
+                ${sc}
+                <c:out value="'${sc}'"></c:out><br>
                     </td>
                 </tr>
                 <tr>

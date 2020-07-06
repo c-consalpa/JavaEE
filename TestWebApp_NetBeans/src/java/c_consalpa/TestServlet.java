@@ -28,16 +28,15 @@ public class TestServlet extends HttpServlet {
 //            List Headers:
 //             for (Enumeration e = request.getHeaderNames(); e.hasMoreElements();) {
 //                 String header = e.nextElement().toString();
-//                    System.out.println(header + " : " + request.getHeader(header));
-//                    
+//                    System.out.println(header + " : " + request.getHeader(header));     
 //             }
        
 
 //  Locate file on server's file system
-// String str = getServletContext().getRealPath("/WEB-INF/1.txt");
-// File f = new File(str);
+//        String str = getServletContext().getRealPath("/WEB-INF/1.txt");
+//        File f = new File(str);
 //        System.out.println(f.getPath());
-// System.out.println(f.length());
+//        System.out.println(f.length());
 
 
 //        String param_hid = request.getParameter("param_hid");
@@ -50,10 +49,14 @@ mUser user = new mUser();
 user.setName("testName");
 request.setAttribute("user", user);
 
+String ctxParam = this.getServletContext().getInitParameter("context-param");
+        System.out.println(ctxParam);
+        
+        String srvltInitParam = this.getServletConfig().getInitParameter("TestServlet-ctx-param");
+        System.out.println(srvltInitParam);
 
-
-ServletContext ctx = getServletContext();
-ctx.getRequestDispatcher("/forwarded.jsp").forward(request, response);
+//ServletContext ctx = getServletContext();
+//ctx.getRequestDispatcher("/forwarded.jsp").forward(request, response);
 
 }
 

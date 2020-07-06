@@ -121,15 +121,4 @@ scope: <br>
 <jsp:setProperty name="user" property="name" value="set via SetProp"/>
 <jsp:getProperty name="user" property="name"/>
 </p>
-
-<ul>
-    <li>first</li>
-    <li>second</li>
-    <li>third</li>
-
-</ul>
-
-    
-    
-    
     </body> 

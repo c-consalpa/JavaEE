@@ -32,17 +32,20 @@ public class LearnJSTL extends HttpServlet {
         
         
         String script = "<script>alert(0);</script>";
-        Map<String, mProduct> testMap = new HashMap();
-        
+        request.setAttribute("sc", script);
         
         mProduct p1 = new mProduct();
         p1.setId(6540);
         p1.setValue("6540 is the value");
-        testMap.put("one", p1);
+        
         mProduct p2 = new mProduct();
         p2.setId(2222);
         p2.setValue("2222 is the value");
+        
+        Map<String, mProduct> testMap = new HashMap();
+        testMap.put("one", p1);
         testMap.put("two", p2);
+        request.setAttribute("testMap", testMap);
         
         String tokenizedString ="a|C\\Asd|asd\\s|1\\2\\|2|#3| ";
         request.setAttribute("tokenizedString", tokenizedString);
@@ -51,29 +54,20 @@ public class LearnJSTL extends HttpServlet {
         for (int i = 0; i < nums.length; i++) {
             nums[i] = i + 1;
         }
-        
         request.setAttribute("nums", nums);
-        
-        
-        
-        request.setAttribute("script", script);
-        request.setAttribute("testMap", testMap);
-        
+
         mProduct prod0 = new mProduct();
         prod0.setId(6874);
         prod0.setValue("asasasas");
+        
         mProduct prod1 = new mProduct();
         prod1.setId(9999);
         prod1.setValue("xyz");
+        
         List<mProduct> lst = new ArrayList<>();
         lst.add(prod0);
         lst.add(prod1);
         request.setAttribute("dataList", lst);
-        
-        
-        
-        
-        
         
         this.getServletContext().getRequestDispatcher("/LearnJSTL.jsp").forward(request, response);
     }
