@@ -86,7 +86,7 @@
                         Custom tag with attribute:
                     </td>
                     <td>
-                        <test:AttributeTag count="12"></test:AttributeTag>
+                        <test:AttributeTag count=""></test:AttributeTag>
                     </td>
                 </tr>
                    <tr>
