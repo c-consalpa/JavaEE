@@ -7,3 +7,5 @@ Maven_web/.idea/*
 /LearnDB/build/
 /LearnDB/dist/
 /LearnJPA/nbproject/private/
+/SQLGateway/nbproject/private/
+/SQLGateway/build/
