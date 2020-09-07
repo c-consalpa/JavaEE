@@ -6,6 +6,7 @@
     <servlet>
         <servlet-name>TestServlet</servlet-name>
         <servlet-class>c_consalpa.TestServlet</servlet-class>
+       
     </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
@@ -13,6 +14,12 @@
     </servlet-mapping>
     <welcome-file-list>
         <!--<welcome-file>index.html</welcome-file>-->
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index_1.jsp</welcome-file>
     </welcome-file-list>
+    
+    <context-param>
+        <param-name>context-param</param-name>
+        <param-value>123</param-value>
+    </context-param>
+    
 </web-app>
