@@ -28,6 +28,10 @@
                     <td>Bread</td>
                     <td><a href="TestCart_Demo?act=add&amp;id=2">Add</a></td>
                 </tr>   
+                <tr>
+                    <td>Oil</td>
+                    <td><a href="TestCart_Demo?act=add&amp;id=3">Add</a></td>
+                </tr>  
     </table>
     
     <c:import url="/includes/cart.jsp"/>

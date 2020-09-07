@@ -36,7 +36,7 @@ public class Test_ConnectionPooledServlet extends HttpServlet {
             ResultSet resultSet = stmnt.executeQuery("SELECT * FROM test.xes_test");
             while (resultSet.next()) {
                 System.out.println(resultSet.getRow());
-                
+             
             }
         } catch (SQLException ex) {
             System.out.println(ex);

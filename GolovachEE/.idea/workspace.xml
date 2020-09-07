@@ -2,9 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d309186a-e695-40ee-a14d-8f5fb35ff9b8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../GolovachEE_WEB/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GolovachEE_WEB/Servlets3/Servlets3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../GolovachEE_WEB/Servlets3/Servlets3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GolovachEE_WEB/out/artifacts/GolovachEE_WEB_war_exploded/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GolovachEE_WEB/out/artifacts/GolovachEE_WEB_war_exploded/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TestWebApp_NetBeans/build/web/Cart/TestCart_Demo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../TestWebApp_NetBeans/build/web/Cart/TestCart_Demo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TestWebApp_NetBeans/build/web/WEB-INF/classes/c_consalpa/test_cart/TestCart_Demo.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TestWebApp_NetBeans/build/web/WEB-INF/classes/c_consalpa/test_cart/TestCart_Demo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TestWebApp_NetBeans/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../TestWebApp_NetBeans/nbproject/private/private.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TestWebApp_NetBeans/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../TestWebApp_NetBeans/nbproject/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TestWebApp_NetBeans/src/java/c_consalpa/test_cart/TestCart_Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TestWebApp_NetBeans/src/java/c_consalpa/test_cart/TestCart_Demo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TestWebApp_NetBeans/web/Cart/TestCart_Demo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../TestWebApp_NetBeans/web/Cart/TestCart_Demo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mywebapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mywebapp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mywebapp/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../mywebapp/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mywebapp/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../mywebapp/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mywebapp/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../mywebapp/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mywebapp/target/mywebapp.war" beforeDir="false" afterPath="$PROJECT_DIR$/../mywebapp/target/mywebapp.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mywebapp/target/tomcat/conf/logging.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../mywebapp/target/tomcat/conf/logging.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mywebapp/target/tomcat/conf/tomcat-users.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mywebapp/target/tomcat/conf/tomcat-users.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mywebapp/target/tomcat/conf/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mywebapp/target/tomcat/conf/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mywebapp/target/tomcat/logs/access_log.2019-12-12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mywebapp/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/index_jsp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mywebapp/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/index_jsp.java" beforeDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,12 +44,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
-  </component>
   <component name="ProjectId" id="1XIUfJd0eyCFfHMheXf15XtpeyO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -40,6 +55,18 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575910006558" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Application.JDKServer">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -105,11 +132,27 @@
       <option name="presentableId" value="Default" />
       <updated>1574958122290</updated>
       <workItem from="1580733204736" duration="77000" />
+      <workItem from="1594371535453" duration="12000" />
+      <workItem from="1594372537080" duration="24000" />
+      <workItem from="1595342773421" duration="26000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state width="1877" height="267" key="GridCell.Tab.0.bottom" timestamp="1580733280999">

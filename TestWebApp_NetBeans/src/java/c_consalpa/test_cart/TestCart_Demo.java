@@ -19,7 +19,7 @@ private final String SESSION_ATTR_CART = "mcart";
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Cart/TestCart_Demo.jsp");
+        
         Integer productId = Integer.valueOf(request.getParameter("id"));
         String cartAction = request.getParameter("act");
         
@@ -47,7 +47,7 @@ private final String SESSION_ATTR_CART = "mcart";
                 break;
             }
             case "remove" : {
-                System.out.println("ID: " + productId);
+               System.out.println("ID: " + productId);
                System.out.println("cartAction: " + cartAction);
                cart.removeProduct(productId);
                session.setAttribute(SESSION_ATTR_CART, cart);
@@ -57,7 +57,7 @@ private final String SESSION_ATTR_CART = "mcart";
                 System.out.println(cart);
         
 
-        
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Cart/TestCart_Demo.jsp");
         requestDispatcher.forward(request, response);
         
     }
