@@ -8,20 +8,11 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Konstantin
- */
 public class DBUtils {
     private static final String DB_USER = "murach";
     private static final String DB_USER_PASSWORD = "murach";
-    private static final String DB_URL = "jdbc:mysql://localhost:3306";
+    private static final String DB_NAME = "murach";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/" + DB_NAME;
     static {
          try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -35,12 +26,12 @@ public class DBUtils {
     
     
     
-    static String getData() {
+    static String getData(String sql) throws SQLException {
         Connection connection = null; 
         String tableData = "";
-        try {
+        
             connection = getDBConnection();
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM murach_test.cars");
+            PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             
             if (rs != null) {
@@ -48,22 +39,9 @@ public class DBUtils {
                 rs.close();
             }
             ps.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(DBUtils.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
             closeConnection(connection);
-        }
+        
         return tableData;
-    }
-
-    private static void closeConnection(Connection connection) {
-        try {
-            if (connection != null) {
-                connection.close();
-            }
-        } catch (SQLException ex) {
-            System.err.println(ex);
-        }
     }
 
     private static String prepareTableData(ResultSet rs) throws SQLException {
@@ -85,55 +63,29 @@ public class DBUtils {
         return sb.toString();
     }
 
-    static int insertData(String sqlText) {
+    static int insertData(String sqlText) throws SQLException {
         Connection connection = null; 
+        connection = getDBConnection();
         int affectedRowsCount = 0;
-        
-        try {
-            connection = getDBConnection();
-            PreparedStatement ps = connection.prepareStatement(sqlText);
-            affectedRowsCount = ps.executeUpdate();
-            ps.close();
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(DBUtils.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            closeConnection(connection);
-        }
+        PreparedStatement ps = connection.prepareStatement(sqlText);
+        affectedRowsCount = ps.executeUpdate();
+        ps.close();
+        closeConnection(connection);
+
         return affectedRowsCount;
     }
 
-    private static Connection getDBConnection() throws SQLException {
-         Connection connection = null;
-         connection = DriverManager.getConnection(DB_URL, DB_USER, DB_USER_PASSWORD);
-         
-         if (connection == null) {
-             throw new SQLException("failed to craete a connection");
-         }
-         return connection;
-    }
 
-    static int updateData(String sqlText) {
+    static int updateData(String sqlText) throws SQLException {
         Connection connection = null;
         int affectedRowsCount = 0;
+        connection = DriverManager.getConnection(DB_URL, DB_USER, DB_USER_PASSWORD);
         
-        try {
-            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_USER_PASSWORD);
-
-        } catch (SQLException ex) {
-            Logger.getLogger(DBUtils.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            closeConnection(connection);
-        }
+        PreparedStatement ps = connection.prepareStatement(sqlText);
+        affectedRowsCount = ps.executeUpdate();
+        ps.close();
         
-        try {
-            PreparedStatement ps = connection.prepareStatement(sqlText);
-            affectedRowsCount = ps.executeUpdate();
-            ps.close();
-        } catch (SQLException ex) {
-            System.out.println("statement execution failed");
-            Logger.getLogger(DBUtils.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        closeConnection(connection);
         return affectedRowsCount;
     }
 
@@ -153,5 +105,29 @@ public class DBUtils {
             closeConnection(connection);
         }
         return removedRowsCnt;
+    }
+    
+    private static Connection getDBConnection() throws SQLException {
+         Connection connection = null;
+         connection = DriverManager.getConnection(DB_URL, DB_USER, DB_USER_PASSWORD);
+         
+         if (connection == null) {
+             throw new SQLException("failed to craete a connection");
+         }
+         return connection;
+    }
+    
+    private static void closeConnection(Connection connection) {
+        try {
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+    }
+
+    private static void closeStatement() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

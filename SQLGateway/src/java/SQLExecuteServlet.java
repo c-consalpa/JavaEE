@@ -1,5 +1,8 @@
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +19,7 @@ public class SQLExecuteServlet extends HttpServlet {
             throws ServletException, IOException {
         Class dbUtilsClz = DBUtils.class;
         RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/sqlPage.jsp");
-        String resultMessage = "";
+        String queryResultMessage = "";
         
         String sqlText = (String) request.getParameter("sqlText");
         if (sqlText == null || sqlText.isEmpty()) {
@@ -27,30 +30,47 @@ public class SQLExecuteServlet extends HttpServlet {
         String operation = sqlText.split(" ")[0].toUpperCase();
         switch (operation) {
             case "SELECT": {
-                String tableData = DBUtils.getData();
-                resultMessage = "Query Executed: \r\n";
-                request.setAttribute("resultData", tableData);
+            try {
+                queryResultMessage = DBUtils.getData(sqlText);
+            } catch (SQLException ex) {
+                Logger.getLogger(SQLExecuteServlet.class.getName()).log(Level.SEVERE, null, ex);
+                queryResultMessage = "SQL query failed: <br> " + ex.getMessage();   
+            }
+                request.setAttribute("resultData", queryResultMessage);
                 requestDispatcher.forward(request, response);
                 break;
             }
             case "UPDATE": {
-                int affectedRowsCnt = DBUtils.updateData(sqlText);
-                resultMessage = "Query Executed. Affected rows: \r\n: " + affectedRowsCnt;
-                request.setAttribute("resultData", resultMessage);
+                int affectedRowsCnt = 0;
+                try {
+                    affectedRowsCnt = DBUtils.updateData(sqlText);
+                    queryResultMessage = "Query Executed. Affected rows: \r\n: " + affectedRowsCnt;
+            } catch (SQLException ex) {
+                Logger.getLogger(SQLExecuteServlet.class.getName()).log(Level.SEVERE, null, ex);
+                queryResultMessage = "SQL query failed: \r\n" + ex.getMessage();
+            }
+                request.setAttribute("resultData", queryResultMessage);
                 requestDispatcher.forward(request, response);
                 break;
             }
             case "INSERT": {
-                int affectedRowsCnt = DBUtils.insertData(sqlText);
-                resultMessage = "Query Executed. Affected rows: \r\n: " + affectedRowsCnt;
-                request.setAttribute("resultData", resultMessage);
+                int affectedRowsCnt = 0;
+            try {
+                affectedRowsCnt = DBUtils.insertData(sqlText);
+                queryResultMessage = "Inserted Rows: \r\n: " + affectedRowsCnt;
+            } catch (SQLException ex) {
+                Logger.getLogger(SQLExecuteServlet.class.getName()).log(Level.SEVERE, null, ex);
+                queryResultMessage = "Insert operation failed: \r\n" + ex.getMessage();
+            }
+               
+                request.setAttribute("resultData", queryResultMessage);
                 requestDispatcher.forward(request, response);
                 break;
             }
             case "DELETE": {
                 int removedRowsCnt = DBUtils.removeData(sqlText);
-                resultMessage = "Query Executed. Removed rows: \r\n: " + removedRowsCnt;
-                request.setAttribute("resultData", resultMessage);
+                queryResultMessage = "Query Executed. Removed rows: \r\n: " + removedRowsCnt;
+                request.setAttribute("resultData", queryResultMessage);
                 requestDispatcher.forward(request, response);
                 break;
             }
