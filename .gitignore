@@ -3,6 +3,7 @@ murach/Murach's Java Servlets and JSP 3rd Edition (2014).pdf
 GolovachEE/.idea/*
 Maven_web/.idea/*
 /TestWebApp_NetBeans/dist/
+/TestWebApp_NetBeans/build/*
 /LearnDB/nbproject/*
 /LearnDB/build/
 /LearnDB/dist/
