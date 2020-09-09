@@ -11,8 +11,8 @@ import java.util.logging.Logger;
 public class DBUtils {
     private static final String DB_USER = "murach";
     private static final String DB_USER_PASSWORD = "murach";
-    private static final String DB_NAME = "murach";
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/" + DB_NAME;
+    private static final String DB_NAME = "murach_test";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/murach_test?serverTimezone=UTC";
     static {
          try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -26,22 +26,34 @@ public class DBUtils {
     
     
     
-    static String getData(String sql) throws SQLException {
+    static String getData(String rawSQL) throws SQLException {
         Connection connection = null; 
         String tableData = "";
         
             connection = getDBConnection();
-            PreparedStatement ps = connection.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(rawSQL);
             ResultSet rs = ps.executeQuery();
-            
-            if (rs != null) {
-                tableData = prepareTableData(rs);
-                rs.close();
-            }
+            tableData = prepareTableData(rs);
+            rs.close();
             ps.close();
             closeConnection(connection);
         
         return tableData;
+    }
+    
+    
+    static int modifyData(String rawSQL) throws SQLException {
+        int affectedRowsCnt = 0;
+        
+        Connection connection = null; 
+        connection = getDBConnection();
+        int affectedRowsCount = 0;
+        PreparedStatement ps = connection.prepareStatement(rawSQL);
+        affectedRowsCount = ps.executeUpdate();
+        ps.close();
+        closeConnection(connection);
+
+        return affectedRowsCount;
     }
 
     private static String prepareTableData(ResultSet rs) throws SQLException {
@@ -53,7 +65,12 @@ public class DBUtils {
             sb.append("<tr>");
             for (int i = 1; i <= columnsCount; i++) {
                 sb.append("<td>");
-                sb.append(new String(rs.getBytes(i)));
+                byte[] tmp = rs.getBytes(i);
+                if (tmp != null) {
+                    sb.append(new String(tmp));    
+                } else {
+                    sb.append("NULL");    
+                }
                 sb.append("<td>");
             }
             sb.append("</tr>");
@@ -63,50 +80,6 @@ public class DBUtils {
         return sb.toString();
     }
 
-    static int insertData(String sqlText) throws SQLException {
-        Connection connection = null; 
-        connection = getDBConnection();
-        int affectedRowsCount = 0;
-        PreparedStatement ps = connection.prepareStatement(sqlText);
-        affectedRowsCount = ps.executeUpdate();
-        ps.close();
-        closeConnection(connection);
-
-        return affectedRowsCount;
-    }
-
-
-    static int updateData(String sqlText) throws SQLException {
-        Connection connection = null;
-        int affectedRowsCount = 0;
-        connection = DriverManager.getConnection(DB_URL, DB_USER, DB_USER_PASSWORD);
-        
-        PreparedStatement ps = connection.prepareStatement(sqlText);
-        affectedRowsCount = ps.executeUpdate();
-        ps.close();
-        
-        closeConnection(connection);
-        return affectedRowsCount;
-    }
-
-    static int removeData(String sqlText) {
-        Connection connection = null;
-        int removedRowsCnt = 0;
-        
-        try {
-            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_USER_PASSWORD);
-            PreparedStatement ps = connection.prepareStatement(sqlText);
-            removedRowsCnt = ps.executeUpdate();
-            ps.close();            
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(DBUtils.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            closeConnection(connection);
-        }
-        return removedRowsCnt;
-    }
-    
     private static Connection getDBConnection() throws SQLException {
          Connection connection = null;
          connection = DriverManager.getConnection(DB_URL, DB_USER, DB_USER_PASSWORD);

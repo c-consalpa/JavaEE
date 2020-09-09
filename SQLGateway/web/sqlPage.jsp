@@ -9,7 +9,7 @@
         <h1>Oh my CRUD</h1>
         <h2>SQL Statement</h2>
         <form action="SQLExecuteServlet" method="post" id="sqlData">
-            <textarea name="sqlText" cols="40" rows="10" form="sqlData">1</textarea><br/>
+            <textarea name="sqlText" cols="40" rows="10" form="sqlData">${query}</textarea><br/>
             <input type="submit" value="Execute">
         </form>
         <h2>SQL Result</h2>
