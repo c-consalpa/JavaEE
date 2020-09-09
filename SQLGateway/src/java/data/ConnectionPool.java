@@ -13,14 +13,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-/**
- *
- * @author Konstantin
- */
 public class ConnectionPool {
-    private InitialContext ic = null;
-    private static DataSource ds = null;
-    static private ConnectionPool cp = null;
+    private InitialContext          ic = null;
+    private static DataSource       ds = null;
+    static private ConnectionPool   cp = null;
     
     
     private ConnectionPool() {
@@ -58,7 +54,5 @@ public class ConnectionPool {
             }
         }
     }
-    
-    
     
 }

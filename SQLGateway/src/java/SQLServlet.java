@@ -11,18 +11,21 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet(urlPatterns = {"/SQLExecuteServlet"})
-public class SQLExecuteServlet extends HttpServlet {
+public class SQLServlet extends HttpServlet {
 
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+//        response.setCharacterEncoding("UTF-8");
+
         Class dbUtilsClz = DBUtils.class;
         RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/sqlPage.jsp");
         String queryResultMessage = "";
         String sqlText = (String) request.getParameter("sqlText");
-        
+        System.out.println(sqlText);
         if (sqlText == null || sqlText.isEmpty()) {
-            sqlText = "SELECT * FROM cars;";
+            sqlText = "SELECT * FROM test_table;";
         }
 
         // get operation
@@ -36,7 +39,7 @@ public class SQLExecuteServlet extends HttpServlet {
             try {
                 queryResultMessage = DBUtils.getData(sqlText);
             } catch (SQLException ex) {
-                Logger.getLogger(SQLExecuteServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(SQLServlet.class.getName()).log(Level.SEVERE, null, ex);
                 queryResultMessage = "SQL query failed: <br> " + ex.getMessage();   
             }
                 request.setAttribute("resultData", queryResultMessage);
@@ -50,7 +53,7 @@ public class SQLExecuteServlet extends HttpServlet {
                     affectedRowsCnt = DBUtils.modifyData(sqlText);
                     queryResultMessage = "Update Executed. Updated rows: \r\n: " + affectedRowsCnt;
             } catch (SQLException ex) {
-                Logger.getLogger(SQLExecuteServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(SQLServlet.class.getName()).log(Level.SEVERE, null, ex);
                 queryResultMessage = "SQL query failed: \r\n" + ex.getMessage();
             }
                 request.setAttribute("resultData", queryResultMessage);
@@ -64,7 +67,7 @@ public class SQLExecuteServlet extends HttpServlet {
                 affectedRowsCnt = DBUtils.modifyData(sqlText);
                 queryResultMessage = "Inserted Rows: \r\n: " + affectedRowsCnt;
             } catch (SQLException ex) {
-                Logger.getLogger(SQLExecuteServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(SQLServlet.class.getName()).log(Level.SEVERE, null, ex);
                 queryResultMessage = "Insert operation failed: \r\n" + ex.getMessage();
             }
                
@@ -78,7 +81,7 @@ public class SQLExecuteServlet extends HttpServlet {
             try {
                 removedRowsCnt = DBUtils.modifyData(sqlText);
             } catch (SQLException ex) {
-                Logger.getLogger(SQLExecuteServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(SQLServlet.class.getName()).log(Level.SEVERE, null, ex);
                 queryResultMessage = "DELETE operation failed: <br/>: " + ex.getMessage();
             }
                 queryResultMessage = "Query Executed. Removed rows: \r\n: " + removedRowsCnt;

@@ -1,4 +1,6 @@
 
+import data.ConnectionPool;
+import java.nio.charset.Charset;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,12 +11,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DBUtils {
-    private static final String DB_USER = "murach";
-    private static final String DB_USER_PASSWORD = "murach";
-    private static final String DB_NAME = "murach_test";
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/murach_test";
-//    private static final String DB_URL = "jdbc:mysql://localhost:3306/murach_test?useLegacyDatetimeCode=false";
-    
+    private static final String DB_USER             = "murach";
+    private static final String DB_USER_PASSWORD    = "murach";
+    private static final String DB_NAME             = "testdb";
+    private static final String DB_URL              = "jdbc:mysql://localhost:3306/" + DB_NAME;
+    private static ConnectionPool cPool                            = null;
     static {
          try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -23,39 +24,35 @@ public class DBUtils {
         }
     }
 
-
-        
-    
-    
-    
     static String getData(String rawSQL) throws SQLException {
-        Connection connection = null; 
         String tableData = "";
         
-            connection = getDBConnection();
-            PreparedStatement ps = connection.prepareStatement(rawSQL);
-            ResultSet rs = ps.executeQuery();
-            tableData = prepareTableData(rs);
-            rs.close();
-            ps.close();
-            closeConnection(connection);
+        cPool = ConnectionPool.getInstance();
+        Connection connection = cPool.getConnection();
+
+        PreparedStatement ps = connection.prepareStatement(rawSQL);
+        ResultSet rs = ps.executeQuery();
+        tableData = prepareTableData(rs);
         
+        rs.close();
+        ps.close();
+        cPool.freeConnection(connection);
         return tableData;
     }
-    
     
     static int modifyData(String rawSQL) throws SQLException {
         int affectedRowsCnt = 0;
         
-        Connection connection = null; 
-        connection = getDBConnection();
-        int affectedRowsCount = 0;
+        cPool = ConnectionPool.getInstance();
+        Connection connection = cPool.getConnection();
+        
+        
         PreparedStatement ps = connection.prepareStatement(rawSQL);
-        affectedRowsCount = ps.executeUpdate();
+        affectedRowsCnt = ps.executeUpdate();
         ps.close();
-        closeConnection(connection);
+        cPool.freeConnection(connection);
 
-        return affectedRowsCount;
+        return affectedRowsCnt;
     }
 
     private static String prepareTableData(ResultSet rs) throws SQLException {
@@ -69,7 +66,7 @@ public class DBUtils {
                 sb.append("<td>");
                 byte[] tmp = rs.getBytes(i);
                 if (tmp != null) {
-                    sb.append(new String(tmp));    
+                    sb.append(new String(tmp, Charset.forName("UTF-8")));    
                 } else {
                     sb.append("NULL");    
                 }
@@ -85,7 +82,7 @@ public class DBUtils {
     private static Connection getDBConnection() throws SQLException {
          Connection connection = null;
          connection = DriverManager.getConnection(DB_URL, DB_USER, DB_USER_PASSWORD);
-         
+
          if (connection == null) {
              throw new SQLException("failed to craete a connection");
          }
@@ -100,9 +97,5 @@ public class DBUtils {
         } catch (SQLException ex) {
             System.err.println(ex);
         }
-    }
-
-    private static void closeStatement() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
