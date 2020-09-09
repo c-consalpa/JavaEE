@@ -12,7 +12,9 @@ public class DBUtils {
     private static final String DB_USER = "murach";
     private static final String DB_USER_PASSWORD = "murach";
     private static final String DB_NAME = "murach_test";
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/murach_test?serverTimezone=UTC";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/murach_test";
+//    private static final String DB_URL = "jdbc:mysql://localhost:3306/murach_test?useLegacyDatetimeCode=false";
+    
     static {
          try {
             Class.forName("com.mysql.cj.jdbc.Driver");
