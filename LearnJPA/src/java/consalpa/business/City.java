@@ -6,35 +6,41 @@
 package consalpa.business;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ *
+ * @author Konstantin
+ */
 @Entity
-public class User implements Serializable {
+public class City implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
-    public long userId;
+    public long cityID;
     
-    @Column(name="name")
-    public String userName;
+    @Column(name="city_name")
+    public String cityName;
 
-    public long getUserID() {
-        return this.userId;
+    public long getCityID() {
+        return cityID;
     }
 
-    public void setUserID(long userID) {
-        this.userId = userID;
+    public void setCityID(long cityID) {
+        this.cityID = cityID;
     }
 
     @Override
     public String toString() {
-        return "User{" + "userId=" + userId + ", userName=" + userName + '}';
+        return "City{" + "cityID=" + cityID + ", cityName=" + cityName + '}';
     }
+    
 
     
 }
