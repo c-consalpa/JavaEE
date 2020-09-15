@@ -33,9 +33,9 @@ public class Test_ConnectionPooledServlet extends HttpServlet {
         
         try {
             Statement stmnt = connection.createStatement();
-            ResultSet resultSet = stmnt.executeQuery("SELECT * FROM test.xes_test");
+            ResultSet resultSet = stmnt.executeQuery("SELECT * FROM user");
             while (resultSet.next()) {
-                System.out.println(resultSet.getRow());
+                System.out.println(resultSet.getString("name"));
              
             }
         } catch (SQLException ex) {

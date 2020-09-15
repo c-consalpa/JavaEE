@@ -22,6 +22,17 @@ public class User implements Serializable {
     
     @Column(name="name")
     public String userName;
+    
+    @Column(name="city")
+    public String cityID;
+
+    public String getCityID() {
+        return cityID;
+    }
+
+    public void setCityID(String cityID) {
+        this.cityID = cityID;
+    }
 
     public long getUserID() {
         return this.userId;

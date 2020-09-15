@@ -17,7 +17,7 @@ public class ConnectionPool {
     private ConnectionPool() {
         try {
             InitialContext ic = new InitialContext();
-            dataSource = (DataSource) ic.lookup("java:/comp/env/jdbc/c_consalpa");
+            dataSource = (DataSource) ic.lookup("java:/comp/env/c_consalpa");
         } catch (NamingException ex) {
             System.out.println(ex);
         }
