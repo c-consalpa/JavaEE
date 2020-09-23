@@ -5,13 +5,14 @@
     <!--<non-jta-data-source>jdbc/consalpa</non-jta-data-source>-->
     <!--<jta-data-source>jdbc/consalpa</jta-data-source>-->
     <class>consalpa.business.User</class>
+    <class>consalpa.business.Phone</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-        <property name="javax.persistence.schema-generation.database.action" value="create"/>
-        <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
-        <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/testdb?serverTimezone=UTC" />
-        <property name="javax.persistence.jdbc.user" value="murach" />
-        <property name="javax.persistence.jdbc.password" value="murach" />
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/rels?serverTimezone=UTC"/>
+      <property name="javax.persistence.jdbc.user" value="murach"/>
+      <property name="javax.persistence.jdbc.password" value="murach"/>
     </properties>
   </persistence-unit>
 </persistence>

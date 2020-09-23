@@ -6,54 +6,27 @@
 package consalpa.business;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 /**
  *
  * @author c-consalpa
  */
 @Entity
-public class User implements Serializable {
+public class Phone implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
+    @Column(name = "phone_id")
     private Long id;
     
-    @Column(name = "user_name")
-    private String userName;
-
-    @OneToMany
-    private List<Phone> userPhones;
-
-    
-    
-    public List<Phone> getUserPhones() {
-        return userPhones;
-    }
-
-    public void setUserPhones(List<Phone> userPhones) {
-        this.userPhones = userPhones;
-    }
-    
-    
-    
-    
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+    @Column(name = "phone_number")
+    private String phoneNumber;
 
     public Long getId() {
         return id;
@@ -73,10 +46,10 @@ public class User implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
+        if (!(object instanceof Phone)) {
             return false;
         }
-        User other = (User) object;
+        Phone other = (Phone) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -85,7 +58,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "consalpa.business.User[ id=" + id + "; name = " + this.userName + " ]";
+        return "consalpa.business.Phone[ id=" + id + "  + phone number: " + this.phoneNumber + "]";
     }
     
 }

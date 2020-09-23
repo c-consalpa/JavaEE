@@ -1,6 +1,6 @@
 package consalpa;
 
-import consalpa.business.City;
+
 import consalpa.business.User;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +22,11 @@ public class DBUtils {
     
     public static User getUser() {
         EntityManager em = emf.createEntityManager();
-        User usr = em.find(User.class, new Long(4));
-        em.close();
         
-        return usr;
+        User usr = em.find(User.class, 3L);
+        System.out.println(usr);
+        em.close();
+        return null;
     }
     
     public static List<User> getUsers() {
@@ -53,9 +54,8 @@ public class DBUtils {
         }
             return userList;
         }
-        
-        
-   public static int deleteUser_Transacted(User u) {
+              
+    public static int deleteUser_Transacted(User u) {
        if (u == null){
            System.out.println("No such user: null");
            return 0;

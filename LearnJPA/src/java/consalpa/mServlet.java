@@ -5,12 +5,13 @@
  */
 package consalpa;
 
-
-import consalpa.business.City;
+import consalpa.business.Phone;
 import consalpa.business.User;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,19 +22,34 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "mServlet", urlPatterns = {"/mServlet"})
 public class mServlet extends HttpServlet {
 
-  
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("LearnJPAPU");
+    
+ 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-            User usr = DBUtils.getUser();
-            System.out.println(usr);
-            
-            
-            List<User> users = DBUtils.getUsers();
-            System.out.println(users);
-            
-            
-            DBUtils.deleteUser_Transacted(usr);
-            
+            throws ServletException {
+
+                       EntityManager em = emf.createEntityManager();
+                       Phone phone = em.find(Phone.class, 5L);
+                       System.out.println(phone);
+                       
+                       User usr = new User();
+                       usr.setId(99L);
+                       usr.setUserName("NOTKEVIIN1");
+                       
+                       
+                       User usr1 = new User();
+                       usr1.setId(99L);
+                       usr1.setUserName("NOTKEVIIN1");
+                       
+                       EntityTransaction trans = em.getTransaction();
+                       trans.begin();
+                       //em.remove(em.merge(usr));
+                       
+                       
+                       trans.commit();
+                       
+                       
+        
         }
 
        
