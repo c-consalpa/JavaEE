@@ -8,7 +8,14 @@ package consalpa;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Address;
+import javax.mail.Message;
+import javax.mail.MessagingException;
 import javax.mail.Session;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +34,27 @@ public class EmailServlet extends HttpServlet {
         Properties props = new Properties();
         props.put("mail.smtp.host", "localhost");
         Session emailSession = Session.getDefaultInstance(props);
+        
+        Message msg = new MimeMessage(emailSession);
+        Address fromAddress, toAddress = null;
+        
+       try {
+            msg.setSubject("testSubject");
+            msg.setText("plainText");
+            msg.setContent("<a href=\"#\">test</a>", "text/html");
+            
+            
+            
+            fromAddress = new InternetAddress("konstantin.alpashkin@gmail.com");
+            msg.setFrom(fromAddress);
+            toAddress = new InternetAddress("alpashkin.konsta@mail.ru");
+            msg.setRecipient(Message.RecipientType.TO, toAddress);
+                    
+                    
+        } catch (MessagingException ex) {
+            Logger.getLogger(EmailServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
 
     }
 
