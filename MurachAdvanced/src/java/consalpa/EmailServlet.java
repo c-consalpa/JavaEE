@@ -11,9 +11,12 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.Address;
+import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
@@ -26,31 +29,66 @@ import javax.servlet.http.HttpServletResponse;
  * @author c-consalpa
  */
 public class EmailServlet extends HttpServlet {
+private static final String FROM        = "alpashkin.konsta@mail.ru";
+private static final String TO          = "konstantin.alpashkin@gmail.com";
+private static final String FROM_PWD    = "bass655";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        
         Properties props = new Properties();
-        props.put("mail.smtp.host", "localhost");
-        Session emailSession = Session.getDefaultInstance(props);
+//        props.put("mail.transport.protocol", "smtps");
+//        props.put("mail.smtps.host", "smtp.gmail.com");
+//        props.put("mail.smtps.port", 465);
+//        props.put("mail.smtps.auth", "true");
+//        props.put("mail.smtps.quitwait", "false");
+
+
+          props.put("mail.smtp.host", "smtp.mail.ru");
+          props.put("mail.smtp.port", 465);
+          props.put("mail.smtp.auth", true);
+          props.put("mail.smtp.starttls.enable", true);
+          props.put("mail.smtp.quitwait", false);
+//props.put("mail.smtps.ssl.checkserveridentity", true);
+//props.put("mail.smtps.ssl.trust", "*");
+props.put("mail.smtp.ssl.enable", "true");
+
+//        Session emailSession = Session.getDefaultInstance(props);
+        Session emailSession = Session.getInstance(props,
+                new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(FROM, FROM_PWD); //To change body of generated methods, choose Tools | Templates.
+            }
+
+                }
+                );
+        emailSession.setDebug(true);
+        
         
         Message msg = new MimeMessage(emailSession);
         Address fromAddress, toAddress = null;
         
        try {
             msg.setSubject("testSubject");
-            msg.setText("plainText");
-            msg.setContent("<a href=\"#\">test</a>", "text/html");
+            msg.setText("htmlText");
+//            msg.setContent("<a href=\"#\">test</a>", "text/html");
             
-            
-            
-            fromAddress = new InternetAddress("konstantin.alpashkin@gmail.com");
+            fromAddress = new InternetAddress(FROM);
+            toAddress = new InternetAddress(TO);
             msg.setFrom(fromAddress);
-            toAddress = new InternetAddress("alpashkin.konsta@mail.ru");
             msg.setRecipient(Message.RecipientType.TO, toAddress);
                     
-                    
+            
+            
+//            Transport transport = emailSession.getTransport();
+//            transport.connect("konstantin.alpashkin@gmail.com", "jewishpawnage");
+//            transport.sendMessage(msg, msg.getAllRecipients());
+Transport.send(msg);
+            System.out.println("message sent");
+//            transport.close();
         } catch (MessagingException ex) {
             Logger.getLogger(EmailServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
