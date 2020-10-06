@@ -30,7 +30,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class EmailServlet extends HttpServlet {
 private static final String FROM        = "alpashkin.konsta@mail.ru";
-private static final String TO          = "konstantin.alpashkin@gmail.com";
+private static final String TO          = "konstantin1.alpashkin@gmail.com";
 private static final String FROM_PWD    = "bass655";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -51,9 +51,8 @@ private static final String FROM_PWD    = "bass655";
           props.put("mail.smtp.auth", true);
           props.put("mail.smtp.starttls.enable", true);
           props.put("mail.smtp.quitwait", false);
-//props.put("mail.smtps.ssl.checkserveridentity", true);
-//props.put("mail.smtps.ssl.trust", "*");
-props.put("mail.smtp.ssl.enable", "true");
+          props.put("mail.smtp.ssl.enable", "true");
+
 
 //        Session emailSession = Session.getDefaultInstance(props);
         Session emailSession = Session.getInstance(props,
@@ -76,7 +75,7 @@ props.put("mail.smtp.ssl.enable", "true");
             msg.setText("htmlText");
 //            msg.setContent("<a href=\"#\">test</a>", "text/html");
             
-            fromAddress = new InternetAddress(FROM);
+            fromAddress = new InternetAddress("alpashkin.konsta@mail.ru");
             toAddress = new InternetAddress(TO);
             msg.setFrom(fromAddress);
             msg.setRecipient(Message.RecipientType.TO, toAddress);
@@ -84,10 +83,11 @@ props.put("mail.smtp.ssl.enable", "true");
             
             
 //            Transport transport = emailSession.getTransport();
-//            transport.connect("konstantin.alpashkin@gmail.com", "jewishpawnage");
+//            transport.connect(FROM, FROM_PWD);
 //            transport.sendMessage(msg, msg.getAllRecipients());
+
 Transport.send(msg);
-            System.out.println("message sent");
+            
 //            transport.close();
         } catch (MessagingException ex) {
             Logger.getLogger(EmailServlet.class.getName()).log(Level.SEVERE, null, ex);

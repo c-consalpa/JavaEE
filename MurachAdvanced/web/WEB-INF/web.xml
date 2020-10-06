@@ -13,4 +13,27 @@
             30
         </session-timeout>
     </session-config>
+
+
+
+    <security-role>
+        <role-name>mAdmin</role-name>
+    </security-role>
+    
+<security-constraint>
+    <web-resource-collection>
+        <web-resource-name>testProtected</web-resource-name>
+        <url-pattern>/ProtectedServlet</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+        <role-name>mAdmin</role-name>
+    </auth-constraint>
+    <user-data-constraint>
+        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+</security-constraint>
+<login-config>
+    <auth-method>DIGEST</auth-method>
+    <realm-name>Admin TEST 666</realm-name>
+</login-config>
 </web-app>
