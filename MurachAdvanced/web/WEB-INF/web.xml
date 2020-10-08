@@ -16,9 +16,9 @@
 
 
 
-    <security-role>
-        <role-name>mAdmin</role-name>
-    </security-role>
+<security-role>
+    <role-name>madmin</role-name>
+</security-role>
     
 <security-constraint>
     <web-resource-collection>
@@ -26,14 +26,17 @@
         <url-pattern>/ProtectedServlet</url-pattern>
     </web-resource-collection>
     <auth-constraint>
-        <role-name>mAdmin</role-name>
+        <role-name>madmin</role-name>
     </auth-constraint>
     <user-data-constraint>
         <transport-guarantee>CONFIDENTIAL</transport-guarantee>
     </user-data-constraint>
 </security-constraint>
 <login-config>
-    <auth-method>DIGEST</auth-method>
-    <realm-name>Admin TEST 666</realm-name>
+    <auth-method>FORM</auth-method>
+    <form-login-config>
+        <form-login-page>/authForm.html</form-login-page>
+        <form-error-page>/authError.html</form-error-page>
+    </form-login-config>
 </login-config>
 </web-app>
