@@ -1,1 +1,16 @@
-D:/Java/JavaEE/Golovach/Golovach_JavaJunior/Servlet1/.idea
+D:/Java/JavaEE/Golovach/Golovach_JavaJunior/Servlet1/.idea/*
+
+Murach/*.pdf
+Murach/jsp3_allfiles/*
+Murach/LearnDB/build/*
+Murach/LearnDB/nbproject/*
+
+Murach/SQLGateway/build/*
+Murach/SQLGateway/nbproject/*
+
+Murach/MurachAdvanced/build/*
+Murach/MurachAdvanced/nbproject/*
+
+Murach/LearnJPA/build/*
+Murach/LearnJPA/nbproject/*
+Murach/jsp3_allfiles.zip
