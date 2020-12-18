@@ -1,8 +1,9 @@
 package consalpa;
 
+import consalpa.Data.DAO.MockStorageDAOImpl;
 import consalpa.Data.MockStorage;
-import consalpa.Data.Product;
-import consalpa.Data.StorageDAOImpl;
+import consalpa.Model.Product;
+import consalpa.Data.DAO.MockStorageDAOImpl;
 import consalpa.Exceptions.NoSuchEntityException;
 import org.junit.jupiter.api.Test;
 
@@ -14,15 +15,37 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class TestMockStorage {
-    MockStorage mockStorage = new MockStorage();
-    Map<Long, String> data = new HashMap<>(mockStorage.getStorage());
+    private MockStorage mockStorage;
+    Map<Long, String> data;
+    private MockStorageDAOImpl testDAO;
+
+    public TestMockStorage() {
+        mockStorage = new MockStorage();
+        testDAO = new MockStorageDAOImpl(mockStorage);
+        data = new HashMap<>(mockStorage.getStorage());
+    }
+
+
 
     @Test
-    public void testStorageDAOImpl() throws NoSuchEntityException {
-        StorageDAOImpl testDAO = new StorageDAOImpl();
-        assertEquals(new Product(1, "oil"), testDAO.getProductByID(1L));
+    public void testGetSingleProduct() throws NoSuchEntityException {
+        assertEquals(new Product(1L, "oil"), testDAO.getProductByID(1L));
+    }
 
+    @Test
+    public void testGetAllProducts() {
         assertEquals(testDAO.getAllProducts().size(), 3);
+    }
+
+    @Test
+    public void testGetNonExistingProduct() {
+        try{
+            testDAO.getProductByID(5);
+        } catch (NoSuchEntityException e) {
+            //mock assertion
+            assertEquals(e, e);
+        }
 
     }
 }
+

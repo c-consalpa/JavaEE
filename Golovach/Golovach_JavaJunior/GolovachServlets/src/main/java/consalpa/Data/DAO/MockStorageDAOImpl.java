@@ -1,18 +1,19 @@
-package consalpa.Data;
+package consalpa.Data.DAO;
 
+import consalpa.Data.MockStorage;
+import consalpa.Model.Product;
 import consalpa.Exceptions.NoSuchEntityException;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class StorageDAOImpl implements mDAO {
+public class MockStorageDAOImpl implements mDAO {
     Map<Long, String> storage;
 
-    public StorageDAOImpl() {
-        storage = new MockStorage().getStorage();
+    public MockStorageDAOImpl(MockStorage mockStorage) {
+        storage = mockStorage.getStorage();
     }
 
 
@@ -22,7 +23,10 @@ public class StorageDAOImpl implements mDAO {
         if (!storage.containsKey(id)) {
             throw new NoSuchEntityException("No item in storage with id: " + id);
         } else {
-            return new Product(id, storage.get(id));
+            Product tmpPrd  = new Product();
+            tmpPrd.setId(id);
+            tmpPrd.setProductName(storage.get(id));
+            return tmpPrd;
         }
 
 
@@ -30,10 +34,13 @@ public class StorageDAOImpl implements mDAO {
 
     @Override
     public List<Product> getAllProducts() {
-
         List<Product> products = new ArrayList<Product>();
+
         for (long id: storage.keySet()) {
-            products.add(new Product(id, storage.get(id)));
+            Product tmpPrd = new Product();
+            tmpPrd.setId(id);
+            tmpPrd.setProductName(storage.get(id));
+            products.add(tmpPrd);
         }
         return products;
     }

@@ -1,5 +1,6 @@
-package consalpa.Data;
+package consalpa.Data.DAO;
 
+import consalpa.Model.Product;
 import consalpa.Exceptions.NoSuchEntityException;
 
 import java.util.List;
