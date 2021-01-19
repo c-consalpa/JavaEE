@@ -3,10 +3,11 @@ package consalpa.Data.DAO;
 import consalpa.Model.Product;
 import consalpa.Exceptions.NoSuchEntityException;
 
-import java.util.List;
+
+import java.util.Set;
 
 public interface mDAO {
     public Product getProductByID(long id) throws NoSuchEntityException;
 
-    public List<Product> getAllProducts();
+    public Set<Product> getAllProducts();
 }

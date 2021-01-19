@@ -3,16 +3,20 @@ package consalpa.Controllers;
 import consalpa.Components.mCart;
 import consalpa.Data.DAO.MockStorageDAOImpl;
 import consalpa.Data.MockStorage;
+import consalpa.Exceptions.NoSuchEntityException;
 import consalpa.Model.Product;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class ProductServlet extends HttpServlet {
@@ -21,40 +25,58 @@ public class ProductServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String viewProduct = request.getParameter("viewProduct");
-        System.out.println(viewProduct);
+        ServletContext ctx = getServletContext();
+
+        String action = request.getParameter("action");
+
         // init products
         MockStorage mockStorage = new MockStorage();
         MockStorageDAOImpl mockStorageDAO = new MockStorageDAOImpl(mockStorage);
-        List<Product> products = mockStorageDAO.getAllProducts();
+        HashSet<Product> products = mockStorageDAO.getAllProducts();
         request.setAttribute("products", products);
 
         // init session
         HttpSession session = request.getSession();
-        mCart mCart = (consalpa.Components.mCart) session.getAttribute("cart");
+        mCart mCart = (consalpa.Components.mCart) session.getAttribute("mcart");
+
         if (mCart == null) {
             mCart = new mCart();
         }
-        String action = request.getParameter("action");
 
         if (action != null && !action.isEmpty()) {
+            Product tmpProduct = null;
+            int productID = 0;
+
+            try {
+                productID = Integer.parseInt(request.getParameter("productId"));
+            } catch (NumberFormatException ex) {
+                System.out.println("cannot parse product ID");
+            }
+
             switch (action) {
                 case "add" :
-                    System.out.println("add");
+                    try {
+                        tmpProduct = mockStorageDAO.getProductByID(productID);
+                    } catch (NoSuchEntityException e) {
+                        e.printStackTrace();
+                    }
+
+                    mCart.add2Cart(tmpProduct);
+                    session.setAttribute("mcart", mCart);
+                    ctx.getRequestDispatcher("/productPage.jsp").forward(request,response);
                     break;
-                case "delete" :
-                    System.out.println("add");
-                    break;
-                case "clear":
-                    System.out.println("add");
-                    break;
+                case "view":
+                    try {
+                        tmpProduct = mockStorageDAO.getProductByID(productID);
+                    } catch (NoSuchEntityException e) {
+                        e.printStackTrace();
+                    }
+                    request.setAttribute("product", tmpProduct);
+                    ctx.getRequestDispatcher("/productDetails.jsp").forward(request,response);
+                    return;
             }
         }
-
-
-
-
-        this.getServletContext().getRequestDispatcher("/productPage.jsp").forward(request,response);
+        ctx.getRequestDispatcher("/productPage.jsp").forward(request,response);
 
     }
 }

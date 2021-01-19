@@ -29,7 +29,7 @@ public class TestMockStorage {
 
     @Test
     public void testGetSingleProduct() throws NoSuchEntityException {
-        assertEquals(new Product(1L, "oil"), testDAO.getProductByID(1L));
+        assertEquals(new Product(90L, "oil"), testDAO.getProductByID(90));
     }
 
     @Test

@@ -1,5 +1,6 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:useBean id="cart" class="Models.Cart" scope="session"></jsp:useBean>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
+<%--<jsp:useBean id="cart" class="Models.Cart" scope="session"></jsp:useBean>--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>

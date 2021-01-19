@@ -20,7 +20,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.0.27" level="application_server_libraries" />
-    <orderEntry type="library" name="servlet-api" level="project" />
     <orderEntry type="library" name="jstl-api" level="project" />
     <orderEntry type="library" name="jstl-impl" level="project" />
   </component>
