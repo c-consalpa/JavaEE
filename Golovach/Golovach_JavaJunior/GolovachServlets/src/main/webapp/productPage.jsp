@@ -26,6 +26,6 @@
         </tr>
     </c:forEach>
 </table>
-
+<%@include file="cart.jsp"%>
 </body>
 </html>

@@ -64,7 +64,8 @@ public class ProductServlet extends HttpServlet {
                     mCart.add2Cart(tmpProduct);
                     session.setAttribute("mcart", mCart);
                     ctx.getRequestDispatcher("/productPage.jsp").forward(request,response);
-                    break;
+                    return;
+
                 case "view":
                     try {
                         tmpProduct = mockStorageDAO.getProductByID(productID);
@@ -74,9 +75,18 @@ public class ProductServlet extends HttpServlet {
                     request.setAttribute("product", tmpProduct);
                     ctx.getRequestDispatcher("/productDetails.jsp").forward(request,response);
                     return;
+                case "delete":
+                    try {
+                        tmpProduct = mockStorageDAO.getProductByID(productID);
+                    } catch (NoSuchEntityException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    session.setAttribute("mcart", mCart.removeItemFromCart(tmpProduct));
             }
         }
-        ctx.getRequestDispatcher("/productPage.jsp").forward(request,response);
 
+        ctx.getRequestDispatcher("/productPage.jsp").forward(request,response);
     }
 }

@@ -7,8 +7,9 @@
 </head>
 <body>
     Product details page.
-    <p>Product: ${product.productName}</p>
+    <p>Product Name: ${product.productName}</p>
     <p>Product ID: ${product.id}</p>
+    <a href="product.do?productId=${product.id}&action=add">Add to Cart</a>
     <%@include file="cart.jsp"%>
 </body>
 </html>

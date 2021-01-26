@@ -40,4 +40,22 @@ public class mCart {
                 "cartItems=" + cartItems +
                 '}';
     }
+
+    public mCart removeItemFromCart(Product product) {
+        if (!cartItems.containsKey(product)) {
+            return this;
+        }
+         int currentProductsCount = cartItems.get(product);
+
+        if (currentProductsCount > 1) {
+            cartItems.put(product, cartItems.get(product) - 1);
+            System.out.println("cart product--: " + product + "; Left: " + cartItems.get(product));
+        } else if (currentProductsCount == 1) {
+            cartItems.remove(product);
+            System.out.println("removed product from cart");
+
+        }
+
+        return this;
+    }
 }
