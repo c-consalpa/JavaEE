@@ -40,7 +40,7 @@ appContext-dao-aop-schema.xml:
     ...
     xmlns:aop="http://spring aop...
 />
-<!-- name aspect-profiler - is a custom string for a bean -->
+<!-- name 'aspect-profiler' - is a custom string for a bean -->
 
     <bean id="aspect-profiler" class="com.consalpa.SimpleProfiler"/>
     <bean id="aspect-logger" class=""/>
@@ -53,6 +53,11 @@ appContext-dao-aop-schema.xml:
         </aop:aspect>
 ...
 ```
+What this means - 
+`<aop:pointcut id="selectByID" expression="execution(* com.consalpa.dao.ProductDAO.getProductByID)"` :
+I want to intercept the method `selectById(int)` of the interface `ProductDAO` regardless of the scope
+(`*`) 
+
 SimpleProfiler.java:
 ```
 public class SimpleProifiler {
