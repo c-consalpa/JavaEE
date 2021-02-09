@@ -6,25 +6,29 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
 <!--Bean instantiation: -->
-    <bean id="mService" class="consalpa.services.BaseService" />
+    <bean id="baseService" class="consalpa.services.BaseService" />
 <!-- Constructor-based inst   -->
-    <bean id="mService_constructored" class="consalpa.services.BaseServiceWithConstructor">
+    <bean id="baseService_constructored" class="consalpa.services.BaseServiceWithConstructor">
 <!--        Pass straight values, primitives, strings, etc: -->
         <constructor-arg type="java.lang.String" value="foo"/>
 <!--        Reference to other managed bean-->
-        <constructor-arg ref="mService"/>
+        <constructor-arg ref="baseService" index="1"/>
     </bean>
 
-    <!--    Setter-based DI:-->
+<!--        Setter-based DI:-->
     <bean id="mService_setters" class="consalpa.services.BaseService_Setters">
         <property name="payload" value="123"/>
     </bean>
 
 <!--    AOP-->
-    <bean id="aspect-profiler" class="consalpa.aspects.SimpleProfiler"/>
+    <bean id="profiler" class="consalpa.aspects.SimpleProfiler"/>
     <aop:config>
-        <aop:aspect ref="aspect-profiler">
-            <aop:pointcut id="any-methods" expression="execution(* )"/>
+        <aop:aspect ref="profiler">
+            <aop:pointcut id="getProductByID" expression="execution(* consalpa.dao.mDao.getProductByID(long)) and args(id)" />
+
+            <aop:around pointcut-ref="getProductByID" method="profile"/>
+
         </aop:aspect>
     </aop:config>
 </beans>
+

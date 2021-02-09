@@ -6,7 +6,9 @@ public class Product implements Serializable {
     private Long id;
     private String productName;
 
-    public Product(Long key, String value) {
+    public Product(Long id, String prdNm) {
+        this.id = id;
+        this.productName = prdNm;
     }
 
     public long getId() {

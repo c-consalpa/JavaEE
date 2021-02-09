@@ -3,7 +3,7 @@ package consalpa.services;
 public class BaseServiceWithConstructor implements mService {
     private String value;
     private mService service;
-    public BaseServiceWithConstructor(String str, BaseService b_srvc) {
+    public BaseServiceWithConstructor(String str, mService b_srvc) {
         this.value = str;
         this.service = b_srvc;
     }
@@ -12,7 +12,7 @@ public class BaseServiceWithConstructor implements mService {
 
     @Override
     public void serve() {
-        System.out.println(this);
+
     }
 
 

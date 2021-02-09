@@ -29,7 +29,7 @@ public class DAOImpl_Mock implements mDao {
     }
 
     @Override
-    public Product getProductByID(Long id) throws NoSuchEntityException {
+    public Product getProductByID(long id) throws NoSuchEntityException {
         if (mockProductsStorage.containsKey(id)) {
             return new Product(id, mockProductsStorage.get(id));
         } else {

@@ -5,7 +5,7 @@ public class BaseService_Setters implements mService {
 
     @Override
     public void serve() {
-        System.out.println(this);
+        
     }
 
     public void setPayload(String pld) {
