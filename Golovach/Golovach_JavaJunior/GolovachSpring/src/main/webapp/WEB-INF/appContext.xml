@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+<!--Bean instantiation: -->
     <bean id="mService" class="consalpa.services.BaseService" />
+<!-- Constructor-based inst   -->
+    <bean id="mService_constructored" class="consalpa.services.BaseServiceWithConstructor">
+<!--        Pass straight values, primitives, strings, etc: -->
+        <constructor-arg type="java.lang.String" value="foo"/>
+<!--        Reference to other managed bean-->
+        <constructor-arg ref="mService"/>
+    </bean>
+
+    <!--    Setter-based DI:-->
+    <bean id="mService_setters" class="consalpa.services.BaseService_Setters">
+        <property name="payload" value="123"/>
+    </bean>
+
+<!--    AOP-->
+    <bean id="aspect-profiler" class="consalpa.aspects.SimpleProfiler"/>
+    <aop:config>
+        <aop:aspect ref="aspect-profiler">
+            <aop:pointcut id="any-methods" expression="execution(* )"/>
+        </aop:aspect>
+    </aop:config>
 </beans>

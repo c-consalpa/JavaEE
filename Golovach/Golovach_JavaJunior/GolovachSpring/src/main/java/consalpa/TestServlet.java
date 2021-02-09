@@ -19,15 +19,18 @@ public class TestServlet extends javax.servlet.http.HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-
+    // Load application context via .getRealPath()
         System.out.println(getServletContext().getRealPath("/WEB-INF/appContext.xml"));
 
-         ApplicationContext ctx = new FileSystemXmlApplicationContext(getServletContext().getRealPath("/WEB-INF/appContext.xml"));
-         mService myBasicService = ctx.getBean("mService", consalpa.services.mService.class);
-        System.out.println(myBasicService.serve());
+        ApplicationContext ctx = new FileSystemXmlApplicationContext(getServletContext().getRealPath("/WEB-INF/appContext.xml"));
+        mService myBasicService = ctx.getBean("mService", consalpa.services.mService.class);
+        mService myBasicService_constr = ctx.getBean("mService_constructored", consalpa.services.mService.class);
 
-//        PrintWriter pw = new PrintWriter(response.getOutputStream());
-//        pw.print("<html><head></head><body>hello</body></html>");
-//        pw.flush();
+
+
+//        myBasicService.serve();
+        myBasicService_constr.serve();
+
+
     }
 }

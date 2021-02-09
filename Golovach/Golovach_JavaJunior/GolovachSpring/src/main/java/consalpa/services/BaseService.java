@@ -2,7 +2,7 @@ package consalpa.services;
 
 public class BaseService implements mService {
     @Override
-    public String serve() {
-        return new String( "hello");
+    public void serve() {
+        System.out.println(this);
     }
 }
