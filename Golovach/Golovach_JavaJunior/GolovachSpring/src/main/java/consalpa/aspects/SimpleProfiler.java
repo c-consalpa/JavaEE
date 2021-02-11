@@ -16,4 +16,9 @@ public class SimpleProfiler {
         }
 
     }
+
+    public Object profile_m(JoinPoint joinPoint) {
+        System.out.println("profile_m");
+        return "123";
+    }
 }
