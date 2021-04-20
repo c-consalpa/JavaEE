@@ -1,8 +1,10 @@
 package consalpa;
 
+import consalpa.aspects.SimpleProfiler;
 import consalpa.dao.MockDAO;
 import consalpa.dao.mDao;
 import consalpa.model.Product;
+import consalpa.services.mService;
 import org.springframework.aop.framework.ProxyFactoryBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -24,25 +26,23 @@ public class TestServlet extends javax.servlet.http.HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     // Load application context via .getRealPath()
 
-        ApplicationContext ctx = new FileSystemXmlApplicationContext(getServletContext().getRealPath("/WEB-INF/appContext_issue.xml"));
-//        ApplicationContext ctx = new FileSystemXmlApplicationContext(getServletContext().getRealPath("/WEB-INF/applicationContextExample.xml"));
-//        Operation op = (Operation) ctx.getBean("opBean");
-//        System.out.println("calling msg...");
-//        op.msg();
-//        System.out.println("calling m...");
-//        op.m();
-//        System.out.println("calling k...");
-//        op.k();
-//        mService myBasicService = ctx.getBean("mService", consalpa.services.mService.class);
-//        mService myBasicService_constr = ctx.getBean("mService_constructored", consalpa.services.mService.class);
-//        myBasicService.serve();
-//        myBasicService_constr.serve();
-//        SimpleProfiler profiler = ctx.getBean("profiler", consalpa.aspects.SimpleProfiler.class);
+        ApplicationContext ctx = new FileSystemXmlApplicationContext(getServletContext().getRealPath("/WEB-INF/appContext.xml"));
 
+
+        mService myBasicService = ctx.getBean("baseService", consalpa.services.mService.class);
+        myBasicService.serve();
+
+        mService myBasicService_constr = ctx.getBean("baseService_constructor", consalpa.services.BaseService_InitConstructor.class);
+        myBasicService_constr.serve();
+
+        mService myBasicService_setters = ctx.getBean("baseService_setters", consalpa.services.BaseService_Setters.class);
+        myBasicService_setters.serve();
+
+        SimpleProfiler profiler = ctx.getBean("aspectProfiler", consalpa.aspects.SimpleProfiler.class);
         mDao mockDAO = ctx.getBean("mockDAO", MockDAO.class);
 
         List<Product> list = mockDAO.getAllProducts();
-        System.out.println(list);
+
 
 
     }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+<!--Bean instantiation: -->
+
+    <bean id="baseService" class="consalpa.services.BaseService"></bean>
+
+    <!-- Constructor-based inst:   -->
+    <bean id="baseService_constructor" class="consalpa.services.BaseService_InitConstructor">
+    <!--        Pass straight values, primitives, strings, etc: -->
+        <constructor-arg type="java.lang.String" value="foo"/>
+    <!--        Reference to other managed bean-->
+        <constructor-arg ref="baseService" index="1"/>
+    </bean>
+
+<!--        Setter-based DI:-->
+    <bean id="baseService_setters" class="consalpa.services.BaseService_Setters">
+        <property name="payload" value="123"/>
+    </bean>
+
+<!--    AOP-->
+    <bean id="mockDAO" class="consalpa.dao.MockDAO" ></bean>
+    <bean id="aspectProfiler" class="consalpa.aspects.SimpleProfiler"></bean>
+    <aop:config proxy-target-class="true">
+<!--        set up an interceptor to profile the execution of mDao.getAllProducts(): -->
+        <aop:aspect id="profileProductRetrieval" ref="aspectProfiler">
+            <aop:pointcut id="getAllProducts" expression="execution(* consalpa.dao.mDao.getAllProducts())" />
+            <aop:around method="profile" pointcut-ref="getAllProducts"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
+

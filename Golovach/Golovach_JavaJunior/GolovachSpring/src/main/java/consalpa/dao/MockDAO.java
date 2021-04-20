@@ -30,13 +30,13 @@ public class MockDAO implements mDao {
         return products;
     }
 
-//    @Override
-//    public Product getProductByID(long id) throws NoSuchEntityException {
-//        if (mockProductsStorage.containsKey(id)) {
-//            return new Product(id, mockProductsStorage.get(id));
-//        } else {
-//            throw new NoSuchEntityException("No product with ID: " + id);
-//        }
-//
-//    }
+    @Override
+    public Product getProductByID(long id) throws NoSuchEntityException {
+        if (mockProductsStorage.containsKey(id)) {
+            return new Product(id, mockProductsStorage.get(id));
+        } else {
+            throw new NoSuchEntityException("No product with ID: " + id);
+        }
+
+    }
 }

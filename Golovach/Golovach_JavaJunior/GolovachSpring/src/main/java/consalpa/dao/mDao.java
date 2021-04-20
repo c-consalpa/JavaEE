@@ -8,5 +8,5 @@ public interface mDao {
 
     public List<Product> getAllProducts();
 
-//    public Product getProductByID (long id) throws NoSuchEntityException;
+    public Product getProductByID (long id) throws NoSuchEntityException;
 }
