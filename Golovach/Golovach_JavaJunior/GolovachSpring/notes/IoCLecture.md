@@ -270,7 +270,7 @@ bean, or as one of the values in the name attribute of the target bean:
 `<ref bean="someBean"/>`
 
 ###Spring config Collections
-In the <list/>, <set/>, <map/>, and <props/> elements, you set the properties and arguments of the Java Collection types
+In the `<list/>`, `<set/>`, `<map/>`, and `<props/>` elements, you set the properties and arguments of the Java Collection types
  List, Set, Map, and Properties, respectively.
  
 ###Nulls and Empty Strings

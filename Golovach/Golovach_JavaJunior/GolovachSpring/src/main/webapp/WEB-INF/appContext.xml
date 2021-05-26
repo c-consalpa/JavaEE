@@ -13,18 +13,18 @@
 
     <!-- Constructor-based inst:   -->
     <bean id="baseService_constructor" class="consalpa.services.BaseService_InitConstructor">
-    <!--        Pass straight values, primitives, strings, etc: -->
+    <!-- Pass straight values, primitives, strings, etc: -->
         <constructor-arg type="java.lang.String" value="foo"/>
-    <!--        Reference to other managed bean-->
+    <!-- Reference to other managed bean-->
         <constructor-arg ref="baseService" index="1"/>
     </bean>
 
-<!--        Setter-based DI:-->
+    <!-- Setter-based DI:-->
     <bean id="baseService_setters" class="consalpa.services.BaseService_Setters">
         <property name="payload" value="123"/>
     </bean>
 
-<!--    AOP-->
+<!--AOP-->
     <bean id="mockDAO" class="consalpa.dao.MockDAO" ></bean>
     <bean id="aspectProfiler" class="consalpa.aspects.SimpleProfiler"></bean>
     <aop:config proxy-target-class="true">

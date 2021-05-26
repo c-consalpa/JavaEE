@@ -38,8 +38,9 @@ public class TestServlet extends javax.servlet.http.HttpServlet {
         mService myBasicService_setters = ctx.getBean("baseService_setters", consalpa.services.BaseService_Setters.class);
         myBasicService_setters.serve();
 
-        SimpleProfiler profiler = ctx.getBean("aspectProfiler", consalpa.aspects.SimpleProfiler.class);
         mDao mockDAO = ctx.getBean("mockDAO", MockDAO.class);
+        SimpleProfiler profiler = ctx.getBean("aspectProfiler", consalpa.aspects.SimpleProfiler.class);
+
 
         List<Product> list = mockDAO.getAllProducts();
 

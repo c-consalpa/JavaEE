@@ -1,3 +1,8 @@
+package com.xany;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +17,10 @@ public class TestServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("hi");
+        String appContextXML = getServletContext().getRealPath("WEB-INF/applicationContext.xml");
+        ApplicationContext ctx = new FileSystemXmlApplicationContext(appContextXML);
+
+        Car c = (Car) ctx.getBean("car");
+        System.out.println(c);
     }
 }

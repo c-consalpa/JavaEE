@@ -24,8 +24,10 @@ public class MockDAO implements mDao {
         List<Product> products = new ArrayList<>();
         for (Map.Entry entry: mockProductsStorage.entrySet()) {
             products.add(
-                    new Product((Long) entry.getKey(), (String) entry.getValue())
-            );
+                    new Product(
+                            (Long) entry.getKey(),
+                            (String) entry.getValue()
+                    ));
         }
         return products;
     }
@@ -37,6 +39,5 @@ public class MockDAO implements mDao {
         } else {
             throw new NoSuchEntityException("No product with ID: " + id);
         }
-
     }
 }
