@@ -20,3 +20,49 @@
     ```xml
     <context:property-placeholder location="classpath:vehicle.properties"/>
     ``` 
+   
+#Bean Scopes
+- singleton - a single shared instance of the bean
+- prototype - a new object is created for each request
+- request
+- session
+- global-session
+
+###Usage
+```xml
+<bean id="" class="" scope=""/>
+```
+
+###Bean lifecycle Methods
+Custom code during bean instantiation/destruction
+
+###Usage
+```xml
+<bean id="foo" class="foo.Bar" init-method="doStuff" destroy-method="doStuff1"></bean>
+```
+
+**Note**: For "prototype" scoped beans, Spring does not call the destroy method.  It 
+is on you to do the cleanup.
+
+#Java-Annotated Config
+###Generic strategy:
+1. Enable component scanning:
+
+    Somewhere in `applicationContext.xml`:
+    ```xml
+    <context:component-scan base-package="xany.model.annotatedModels"/>
+    ```
+     
+2. Add **@Component**
+    ```java
+    @Component("ant")
+    public class Ant implements Creature {
+    ... 
+    }
+   ```
+3. Get instatnce of annotated class:
+    Same as with XML: ctx.getBean("ID", cls.class);
+ 
+ ### Default Bean IDs
+ If Bean ID is not specified explicitly, first-letter-lowecased class name is used
+ `public class Ant ...` => bean ID "ant".

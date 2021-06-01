@@ -22,9 +22,18 @@ public class Car implements Vehicle {
 
     @Override
     public String toString() {
-        return "Car{" +
+        return "Car " + Integer.toHexString(hashCode()) + "; {"+
                 "model='" + model + '\'' +
                 ", engine=" + engine +
                 '}';
+
+    }
+
+    public void initHook() {
+        System.out.println("INIT");
+    }
+
+    public void destroyHook() {
+        System.out.println("DESTR");
     }
 }

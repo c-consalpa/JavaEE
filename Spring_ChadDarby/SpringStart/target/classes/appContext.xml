@@ -4,7 +4,6 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 <!-- .properties declaration: -->
-<!--    <context:property-placeholder location="src/main/resources/vehicle.properties"/>-->
     <context:property-placeholder location="classpath:vehicle.properties"/>
 
 
@@ -14,10 +13,12 @@
     <bean id="moto_engine" class="xany.model.Engine">
         <constructor-arg type="java.lang.String" value="2-stroke moto engine"></constructor-arg>
     </bean>
-
+    <bean id="boat_engine" class="xany.model.Engine">
+        <constructor-arg name="model" value="Water Jet Engine"/>
+    </bean>
 
 <!-- constructor DI: -->
-    <bean id="car" class="xany.model.Car">
+    <bean id="car" class="xany.model.Car" init-method="initHook" destroy-method="destroyHook">
         <constructor-arg value="mark2"></constructor-arg>
         <constructor-arg ref="2jz_turbo"></constructor-arg>
     </bean>
@@ -28,9 +29,6 @@
         <property name="maxSpeed" value="${vehicle.maxSpeed}"></property>
     </bean>
 
-    <bean id="boat_engine" class="xany.model.Engine">
-        <constructor-arg name="model" value="Water Jet Engine"/>
-    </bean>
     <bean id="boat" class="xany.model.Boat">
         <property name="engine" ref="boat_engine"></property>
     </bean>
