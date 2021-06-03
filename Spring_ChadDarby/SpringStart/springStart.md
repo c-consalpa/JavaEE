@@ -63,6 +63,48 @@ is on you to do the cleanup.
 3. Get instatnce of annotated class:
     Same as with XML: ctx.getBean("ID", cls.class);
  
- ### Default Bean IDs
+### Default Bean IDs
  If Bean ID is not specified explicitly, first-letter-lowecased class name is used
  `public class Ant ...` => bean ID "ant".
+ 
+    Note: However, for the special case of when BOTH the first and second characters of the class name are upper case, 
+    then the name is NOT converted.
+ 
+###Injection with @Autowired
+- Constructor-based:
+    ```java
+    @Component
+    class SQLDataStorage {
+        @Autowired
+        public SQLDataStorage(StorageConnector connector) {
+            this.connector = connector;
+        }
+    ...
+    }
+    ```
+  
+- Setter-based
+    ```java
+    @Component
+    class DFFDataStorage {
+    private StorageConnector connector;
+    
+        @Autowired
+        public void setConnector(StorageConnector storageConnector) {
+            this.connector = storageConnector;
+        }
+    }
+    ```
+
+- custom method
+    ```java
+    @Autowired
+        public SQLDataStorage(StorageConnector connector) {
+            this.connector = connector;
+        }
+    ```
+- field injection
+    ```java
+    @Autowired
+        private StorageConnector fileStorageConnector;
+    ```
