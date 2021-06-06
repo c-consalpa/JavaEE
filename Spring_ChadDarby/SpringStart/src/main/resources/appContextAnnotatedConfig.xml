@@ -9,4 +9,6 @@
 
     <context:component-scan base-package="xany.model.annotatedModels"/>
     <context:property-placeholder location="classpath:storage.properties"/>
+    <context:property-placeholder location="classpath:shapes.properties"/>
+
 </beans>

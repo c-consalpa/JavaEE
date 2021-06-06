@@ -3,6 +3,9 @@ package xany.model.annotatedModels;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 @Component("fs")
 public class FileDataStorage implements DataStorage {
 
@@ -11,7 +14,7 @@ public class FileDataStorage implements DataStorage {
 
     @Override
     public String getData() {
-        return null;
+        return "fs";
     }
 
     @Override
@@ -19,8 +22,18 @@ public class FileDataStorage implements DataStorage {
 
     }
 
+    @PostConstruct
+    public void mInitMethod() {
+        System.out.println("created :" + this + " | " + getConnector());
+    }
+
+    @PreDestroy
+    public void mCleanupMethod() {
+
+    }
+
     @Override
     public StorageConnector getConnector() {
-        return fileStorageConnector;
+        return this.fileStorageConnector;
     }
 }

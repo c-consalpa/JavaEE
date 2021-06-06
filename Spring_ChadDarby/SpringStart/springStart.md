@@ -22,7 +22,7 @@
     ``` 
    
 #Bean Scopes
-- singleton - a single shared instance of the bean
+- singleton (default scope) - a single shared instance of the bean
 - prototype - a new object is created for each request
 - request
 - session
@@ -108,3 +108,29 @@ is on you to do the cleanup.
     @Autowired
         private StorageConnector fileStorageConnector;
     ```
+###Annotated Scopes
+
+```java
+@Scope("prototype")
+@Component()
+public class Foo {
+
+}
+```
+
+###PostConstruct/PreDestroy
+```java
+@PostConstruct
+public void mInitMethod() {
+    
+}
+
+@PreDestroy
+public void mCleanupMethod() {
+
+}
+```
+    Note Java9+ requires manual import of javax.annotations.jar for 
+    these hooks;
+    
+#Java Code Config

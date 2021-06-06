@@ -7,11 +7,12 @@ import org.springframework.stereotype.Component;
 public class DFFDataStorage implements DataStorage {
     private StorageConnector connector;
 
+//    @Autowired
+//    public void setConnector(StorageConnector storageConnector) {
+//        System.out.println("Setter called");
+//        this.connector = storageConnector;
+//    }
 
-    public void setConnector(StorageConnector storageConnector) {
-        System.out.println("Setter called");
-        this.connector = storageConnector;
-    }
     @Autowired
     public void customMethod(StorageConnector storageConnector) {
         System.out.println("Custom autowired method");

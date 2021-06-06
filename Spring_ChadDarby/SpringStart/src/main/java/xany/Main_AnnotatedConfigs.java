@@ -11,7 +11,7 @@ public class Main_AnnotatedConfigs {
 //
 //        DataStorage ds1 = (DataStorage) context.getBean("dff");
 //        System.out.println(ds1.getConnector());
-
+//
         DataStorage ds2 = (DataStorage) context.getBean("fs");
         System.out.println(ds2.getConnector());
     }
