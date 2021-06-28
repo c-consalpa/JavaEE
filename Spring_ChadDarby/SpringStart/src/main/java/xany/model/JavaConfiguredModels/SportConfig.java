@@ -9,14 +9,14 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("classpath:coachProps.properties")
 public class SportConfig {
 
-    @Bean
-    public EmployeeData employeeData() {
-        return new CoachData();
+@Bean
+    public Team liverpoolFC() {
+        return new LiverpoolFC();
     }
 
     @Bean
-    public Coach swimCoach() {
-        return new SwimCoach(employeeData());
+    public Coach soccerCoach() {
+        return new SoccerCoach(liverpoolFC());
     }
 
 }
