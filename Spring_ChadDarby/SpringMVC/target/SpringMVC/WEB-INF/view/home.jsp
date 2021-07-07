@@ -9,8 +9,12 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
 </head>
 <body>
-<p>form data: ${param.fname}</p>
+<h1>Home Page</h1>
+
+    <p>form data via \${param.fname}: ${param.fname}</p>
+    <p>form data via \${modelAttr}: ${modelAttr}</p>
 </body>
 </html>
