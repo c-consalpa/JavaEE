@@ -146,5 +146,6 @@ where `${usr.countryValues}` points to a Collection in the `usr` object:
     private HashMap<String, String> countryValues;  // +getter only
 ```
 
-### SpringMVC's Form Tags: radio-buttons
+### SpringMVC's Form Tags: radio-buttons, check-boxes, etc
+Analogous (JSTL iteration for list-based Java fields)
 
