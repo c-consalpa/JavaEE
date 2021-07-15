@@ -12,5 +12,8 @@
     <a href="media/login">Log in to Media portal</a>
     <br>
     <a href="form-tags/showForm">User Registration Form (Form tags demo)</a>
+
+    <br>
+    <a href="students/showForm">Students Form (Hibernate Validation demo)</a>
 </body>
 </html>

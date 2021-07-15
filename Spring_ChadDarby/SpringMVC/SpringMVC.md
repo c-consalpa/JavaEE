@@ -149,3 +149,55 @@ where `${usr.countryValues}` points to a Collection in the `usr` object:
 ### SpringMVC's Form Tags: radio-buttons, check-boxes, etc
 Analogous (JSTL iteration for list-based Java fields)
 
+#SpringMVC ForM validation (e.g - Hibernate Validator)
+The package `import javax.validation.*;` contains annotations to use for form validation.
+Generic approach:
+1. Define constratints in a model class:
+    ```java
+    import javax.validation.constraints.NotEmpty;
+    import javax.validation.constraints.NotNull;
+    import javax.validation.constraints.Size;
+   
+    public class User {  
+   
+    @NotNull
+    @NotEmpty
+    @Size(min = 3, message = "error message")
+    private String name;
+    // ...
+    }
+    ``` 
+2. The omodel object is bound to a form in JSP:
+    ```html
+    <form:form action="processForm" modelAttribute="usr">
+        Name: <form:input path="name"/> 
+        <form:errors path="name" cssClass="error"/><br><br>
+        <input type="submit" value="submit">
+    </form:form>
+    ```
+   where:
+    - `<form:errors path="name" cssClass="error"/>` injects a `<span />` with error text if form's input violates
+     the `usr.name` field constraint. 
+     
+3. In Controller: handle form input:
+```java
+@RequestMapping("/path")
+public String processForm(@Valid @ModelAttribute("usr") User usr,
+                               BindingResult br) {
+
+}
+```
+where:
+- `br` - contains info about errors'
+- `@Valid` - indicates that model.attribute(`usr`)'s constraints must be validated. If a constraint violation occurs 
+ inside `usr`, => `br.hasErrors`  returns `true`.
+ 
+
+    Note See project for using ResourceBundleMessageSource to reuse error messages.
+    
+    
+    
+###custom validation via custom annotations.
+1. Create @CustomAnnotation
+
+    
