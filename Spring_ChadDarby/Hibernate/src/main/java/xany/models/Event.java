@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Event {
 
     public Event() {
+//        ''
     }
 
     @Id
