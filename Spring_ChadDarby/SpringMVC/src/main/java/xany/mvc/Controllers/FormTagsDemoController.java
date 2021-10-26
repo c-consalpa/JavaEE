@@ -12,10 +12,12 @@ public class FormTagsDemoController {
 
     @RequestMapping("/showForm")
     public String showForm(Model model) {
-        //create User object
+        //create User object (POJO). Spring will pass this object along with the request.
         User user = new User();
+
         // "m_user" is the modelattribute of SpringMVC'f <form:form modelAttribute>
         model.addAttribute("usr", user);
+
         return "form-tags";
     }
 

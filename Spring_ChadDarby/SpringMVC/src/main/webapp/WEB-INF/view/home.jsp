@@ -15,6 +15,7 @@
 <h1>Home Page</h1>
 
     <p>form data via \${param.fname}: ${param.f1}</p>
+
     <p>form data via \${modelAttr}: ${modelAttr}</p>
     <p>form data via @RequestParam annotation: ${modelAttrBinding}</p>
 </body>

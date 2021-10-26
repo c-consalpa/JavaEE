@@ -7,15 +7,19 @@
 
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
-    <servlet-name>mDispatchSerlvet</servlet-name>
+    <servlet-name>mDispatchServlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>/WEB-INF/mDispatcher.xml</param-value>
-    </init-param>
+<!--    either webapp/WEB-INF/ must have a <servlet-name>-servlet.xml -->
+<!--    OR-->
+<!--    path to xml should be passed via <init-param> as shown below -->
+
+<!--    <init-param>-->
+<!--      <param-name>contextConfigLocation</param-name>-->
+<!--      <param-value>/WEB-INF/mDispatchServlet-servlet.xml</param-value>-->
+<!--    </init-param>-->
   </servlet>
   <servlet-mapping>
-    <servlet-name>mDispatchSerlvet</servlet-name>
+    <servlet-name>mDispatchServlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 </web-app>
