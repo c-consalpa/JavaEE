@@ -15,7 +15,7 @@ public class FormTagsDemoController {
         //create User object (POJO). Spring will pass this object along with the request.
         User user = new User();
 
-        // "m_user" is the modelattribute of SpringMVC'f <form:form modelAttribute>
+        // "usr" is the model attribute of SpringMVC's <form:form modelAttribute>
         model.addAttribute("usr", user);
 
         return "form-tags";
