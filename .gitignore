@@ -35,3 +35,6 @@ Spring_ChadDarby/SpringMVC/target/*
 
 
 WishList/target/*
+WishList/out/*
+WishList/.idea/*
+WishList/WishList.iml
