@@ -1,4 +1,4 @@
-Golovach/Golovach_JavaJunior/Servlets/.idea/*
+	Golovach/Golovach_JavaJunior/Servlets/.idea/*
 Golovach/Golovach_JavaJunior/GolovachServlets/target/*
 Golovach/Golovach_JavaJunior/GolovachServlets/out/*
 Golovach/Golovach_JavaJunior/GolovachEE_WEB/*
@@ -32,3 +32,6 @@ Spring_ChadDarby/SpringStart/target/*
 Spring_ChadDarby/SpringMVC/.idea/*
 Spring_ChadDarby/SpringMVC/SpringMVC.iml
 Spring_ChadDarby/SpringMVC/target/*
+
+
+WishList\\.idea
