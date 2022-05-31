@@ -11,6 +11,7 @@ public class Main {
         FileSystemXmlApplicationContext ctx = new FileSystemXmlApplicationContext("src/main/resources/appContext.xml");
         Vehicle vehicle = (Vehicle) ctx.getBean("car");
         System.out.println(vehicle);
+        System.out.println();
 
 //        Vehicle vehicle1 = (Vehicle) ctx.getBean("bike");
 //        System.out.println(vehicle1);

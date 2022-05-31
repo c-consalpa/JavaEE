@@ -13,10 +13,10 @@
 <!--    OR-->
 <!--    path to xml should be passed via <init-param> as shown below -->
 
-<!--    <init-param>-->
-<!--      <param-name>contextConfigLocation</param-name>-->
-<!--      <param-value>/WEB-INF/mDispatchServlet-servlet.xml</param-value>-->
-<!--    </init-param>-->
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/mDispatchServlet-servlet.xml</param-value>
+    </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>mDispatchServlet</servlet-name>

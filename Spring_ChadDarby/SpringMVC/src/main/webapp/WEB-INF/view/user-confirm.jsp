@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Spring MVC Form Tags</title>
 </head>
 <body>
 <p>User first name (invokes usr.getFirstName() - \${model.firstName}): ${usr.firstName}</p>

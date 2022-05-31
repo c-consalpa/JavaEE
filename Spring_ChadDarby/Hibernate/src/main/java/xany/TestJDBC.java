@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class TestJDBC {
     public static void main(String[] args) {
-        String jdbcURL = "jdbc:mysql://localhost:3306/?user=root&serverTimezone=UTC";
-        String usr = "chad";
-        String pwd = "123";
+        String jdbcURL = "jdbc:mysql://localhost:3306/?user=devuser&serverTimezone=UTC";
+        String usr = "devuser";
+        String pwd = "Cconsalpa123";
 
     try {
         Connection con = DriverManager.getConnection(jdbcURL, usr, pwd);

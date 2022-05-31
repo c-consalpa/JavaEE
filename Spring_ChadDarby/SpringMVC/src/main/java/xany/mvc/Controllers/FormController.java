@@ -27,6 +27,7 @@ public class FormController {
     // process form using Model
     @RequestMapping("/processFormModel")
     public String testModelData(HttpServletRequest request, Model model) {
+
         String param = request.getParameter("f2");
         model.addAttribute("modelAttr", param.toUpperCase());
         return "home";

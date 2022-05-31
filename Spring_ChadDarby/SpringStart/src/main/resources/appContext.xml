@@ -23,6 +23,8 @@
         <constructor-arg ref="2jz_turbo"></constructor-arg>
     </bean>
 
+
+<!-- setter-based DI-->
     <bean id="bike" class="xany.model.Bike">
         <property name="engine" ref="moto_engine"></property>
         <property name="wheelsCnt" value="3"></property>

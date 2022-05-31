@@ -1,10 +1,11 @@
 package xany.mvc.models;
 
+import org.springframework.stereotype.Component;
 import xany.mvc.validation.UniversityAllowed;
 
 import javax.validation.constraints.*;
 // Model class to demonstrate hibernate validation
-
+@Component
 public class Student {
     private String name;
 
@@ -16,7 +17,7 @@ public class Student {
     private String email;
 
     @NotNull
-    @Min(value = 6, message = "age must be >= 6")
+    @Min(value = 6, message = "${testKey}")
     private Integer age;
 
 

@@ -15,10 +15,9 @@ public class UniversityConstraintValidator implements ConstraintValidator<Univer
    public void initialize(UniversityAllowed constraint) {
       universityConstraint = constraint.value();
    }
-   //
+
    public boolean isValid(String university2Validate, ConstraintValidatorContext context) {
 
-      System.out.println(registeredUniversities.contains(university2Validate));
       return registeredUniversities.contains(university2Validate);
    }
 }

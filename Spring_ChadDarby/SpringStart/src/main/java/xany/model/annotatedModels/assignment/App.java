@@ -14,5 +14,9 @@ public class App {
         ApplicationContext ctx = new FileSystemXmlApplicationContext("src/main/resources/shapesContext.xml");
         ShapeProvider sp = (ShapeProvider) ctx.getBean("shapeProvider");
         System.out.println(sp.getShape());
+        System.out.println(sp.getShape());
+        System.out.println(sp.getShape());
+        System.out.println(sp.getShape());
+        System.out.println(sp.getShape());
     }
 }
