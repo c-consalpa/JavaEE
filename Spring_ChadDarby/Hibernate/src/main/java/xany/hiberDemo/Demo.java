@@ -16,7 +16,7 @@ public class Demo {
         Session session = sf.getCurrentSession();
 
         try {
-            Event ev = new Event("pohod", "bakhch", 50);
+//            Event ev = new Event("pohod", "bakhch", 50);
             Event ev1 = new Event("sevas", "Sevastopol", 3);
 
             // transacted
@@ -28,13 +28,15 @@ public class Demo {
 
 
             // GET:
-//            Event retrievedEv = session.get(Event.class, ev.getId());
+//
+//            Event retrievedEv = session.get(Event.class, 1);
 //            System.out.println(retrievedEv);
 
-            // QUERY:
+//             QUERY:
 //            List<Event> eventList = session
-//                    .createQuery("from Event s where s.id = 3")
+//                    .createQuery("from Event s where s.id = 1")
 //                    .getResultList();
+//            System.out.println(eventList);
 
             // TRUNCATE:
 //            session.createSQLQuery("truncate table event").executeUpdate();
@@ -43,16 +45,15 @@ public class Demo {
             // UPDATE
             // via JPA relations:
             Event eventR = session.get(Event.class, 2);
-//            eventR.setEventLocation("pereezhaem");
+            eventR.setEventLocation("pereezhaem");
 
             // via low HQL
 //            session.createQuery("update Event set eventLocation='Pravdy, 33'").executeUpdate();
 //            System.out.println(eventList);
 
             // DELETE
-            session.delete(eventR);
-
-            session.createQuery("delete from Event where eventLocation='Pravdy, 33'").executeUpdate();
+//            session.delete(eventR);
+//            session.createQuery("delete from Event where eventLocation='Pravdy, 33'").executeUpdate();
 
 
             session.getTransaction().commit();
