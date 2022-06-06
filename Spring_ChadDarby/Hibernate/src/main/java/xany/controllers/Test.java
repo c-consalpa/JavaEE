@@ -14,9 +14,9 @@ import xany.models.Event;
 public class Test {
 
     @RequestMapping("test")
-    public String testMethod(@RequestParam("foo") String param, Model model) {
+    public String test() {
 
-        model.addAttribute("mAttrKey", param);
+
         return "test";
     }
 
@@ -38,6 +38,13 @@ public class Test {
 
     @RequestMapping("dropEvents")
     public String testMethod() {
+
+        String className = "com.mysql.cj.jdbc.Driver";
+        try {
+            Class.forName(className);
+        } catch (ClassNotFoundException ex) {
+            System.out.println("class not found");
+        }
 
 
         SessionFactory sf = new Configuration()

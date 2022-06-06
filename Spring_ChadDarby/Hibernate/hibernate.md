@@ -142,3 +142,7 @@ OR
     mEvent.setLocation("foo")
      session.getTransaction().commit(); // here persistence occurs
 ```
+
+## Hibernate mappings
+
+### @OneToOne
