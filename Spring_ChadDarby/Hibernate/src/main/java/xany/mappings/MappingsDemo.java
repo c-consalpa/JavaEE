@@ -20,8 +20,8 @@ public class MappingsDemo {
 
 
 //
-            User newTestUser = new User("Jim");
-            UserDetail newTestUserDetail = new UserDetail("Sharp@mail.com", "qqq");
+            User newTestUser = new User("Lana");
+            UserDetail newTestUserDetail = new UserDetail("Rhoades@mail.com", "slut");
 
 
             // !!! - association between User and UserDetails:

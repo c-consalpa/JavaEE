@@ -1,6 +1,8 @@
 package xany.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name= "users")
@@ -29,17 +31,13 @@ public class User {
     private UserDetail userDetail;
 
 
-
-
-
-
-
-
-
-
-
-
-
+    @OneToMany(mappedBy = "user",
+            cascade = {CascadeType.PERSIST,
+                    CascadeType.MERGE,
+                    CascadeType.DETACH,
+                    CascadeType.REFRESH
+            })
+    private List<Comment> comments;
 
 
 
@@ -78,4 +76,21 @@ public class User {
                 ", userDetails=" + userDetail +
                 '}';
     }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public void addUserComment(Comment c) {
+        if (comments == null) {
+            comments = new ArrayList<>();
+        }
+        comments.add(c);
+        c.setUser(this);
+    }
+
 }

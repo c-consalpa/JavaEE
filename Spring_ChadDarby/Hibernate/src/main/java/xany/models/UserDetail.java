@@ -30,14 +30,8 @@ public class UserDetail {
         this.userRole = userRole;
     }
 
-
-
-
-
-
-
-
-
+    public UserDetail() {
+    }
 
 
 //    get/set:
