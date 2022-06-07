@@ -146,3 +146,24 @@ OR
 ## Hibernate mappings
 
 ### @OneToOne
+```java
+@Entity
+@Table(name= "users")
+public class User {
+   // Unidirectional User -> UserDetail
+   // CascadeType.All - means that any action on the `users` table will propagate to `user_details`
+   @OneToOne(cascade = CascadeType.ALL)
+   // this defines the foreign key in `users`. this will map to the primary key of `userDetail`
+   @JoinColumn(name = "detail_id")
+   private UserDetail userDetail;
+   
+   // ...
+}
+``` 
+
+To make the relationship bidirectional, in `UserDetail` class:
+```java
+    @OneToOne(mappedBy = "userDetail")
+    private User user;
+```
+- where `userDetail` is the UserDetail field name in userDetail class.
