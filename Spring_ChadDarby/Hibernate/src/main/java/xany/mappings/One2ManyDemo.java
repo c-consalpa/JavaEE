@@ -22,32 +22,67 @@ public class One2ManyDemo {
                 session.beginTransaction();
 
 
-//                User tmpUser = new User("Lana");
-//                UserDetail tmpUserDetails = new UserDetail("Lana@mail.com", "more");
-//                tmpUser.setUserDetail(tmpUserDetails);
-//                session.save(tmpUser);
-
-                User usr = session.get(User.class, 1L);
-
-                Comment c = new Comment("first comment for Lana");
-
-                usr.addUserComment(c);
-
-
-                session.save(c);
-//                session.save(usr);
+                // Create 2 Users:
+//                User user1 = new User("Josh");
+//                UserDetail tmpUserDetails = new UserDetail("Qqqq@mail.com", "dev");
+//                user1.setUserDetail(tmpUserDetails);
+//                session.save(user1);
+//
+//                User user2 = new User("Tim");
+//                UserDetail userDetail2 = new UserDetail("tim@mail.com", "qa");
+//                user2.setUserDetail(userDetail2);
+//                session.save(user2);
 
 
+                // Get user object from DB or reuse Users from  ^
+                 User usr = session.get(User.class, 1L);
+
+//                // Create comments:
+//                Comment c1 = new Comment("comment for " + usr.getUserName());
+//                // associate comment with a user:
+//                usr.addUserComment(c1);
+//                // actually store in db:
+//                session.save(c1);
+//
+//
+//                Comment c2 = new Comment("2 comment for " + user1.getUserName());
+//                user1.addUserComment(c2);
+//                session.save(c2);
+//
+//
+//
+//                Comment c3 = new Comment("first comment for " + user2.getUserName());
+//                user2.addUserComment(c3);
+//                session.save(c3);
+//
+//
+//                Comment c4 = new Comment("2 comment for " + user2.getUserName());
+//                user2.addUserComment(c4);
+//                session.save(c4);
 
 
 
 
 
+
+                // delete comment:
+                Comment comment2delete = session.get(Comment.class, 1L);
+                session.delete(comment2delete);
+                session.flush();
+//
+//                // stdout comments for a user:
+//                User tmpUser = session.get(User.class, 2L);
+//                System.out.println(tmpUser.getComments());
+
+
+                User tmpUser = session.get(User.class, 1L);
+                System.out.println(tmpUser.getComments());
 
                 session.getTransaction().commit();
             } catch (Exception e) {
                 System.out.println("Closing Hibernate sesssion..");
                 session.close();
+                e.printStackTrace();
             } finally
             {
                 System.out.println("closing session");
