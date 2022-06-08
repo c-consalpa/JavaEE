@@ -3,6 +3,7 @@ package xany.mappings;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 import xany.models.Comment;
 import xany.models.User;
 import xany.models.UserDetail;
@@ -32,12 +33,12 @@ public class One2ManyDemo {
 //                UserDetail userDetail2 = new UserDetail("tim@mail.com", "qa");
 //                user2.setUserDetail(userDetail2);
 //                session.save(user2);
-
-
-                // Get user object from DB or reuse Users from  ^
-                 User usr = session.get(User.class, 1L);
-
-//                // Create comments:
+//
+//
+//                // Get user object from DB or reuse Users from  ^
+//                 User usr = session.get(User.class, 1L);
+//
+////                // Create comments:
 //                Comment c1 = new Comment("comment for " + usr.getUserName());
 //                // associate comment with a user:
 //                usr.addUserComment(c1);
@@ -48,9 +49,9 @@ public class One2ManyDemo {
 //                Comment c2 = new Comment("2 comment for " + user1.getUserName());
 //                user1.addUserComment(c2);
 //                session.save(c2);
-//
-//
-//
+
+
+
 //                Comment c3 = new Comment("first comment for " + user2.getUserName());
 //                user2.addUserComment(c3);
 //                session.save(c3);
@@ -62,29 +63,39 @@ public class One2ManyDemo {
 
 
 
-
-
-
-                // delete comment:
-                Comment comment2delete = session.get(Comment.class, 1L);
-                session.delete(comment2delete);
-                session.flush();
+//                // delete comment:
+//                Comment comment2delete = session.get(Comment.class, 1L);
+//                session.delete(comment2delete);
+//                session.flush();
 //
 //                // stdout comments for a user:
-//                User tmpUser = session.get(User.class, 2L);
+                User tmpUser = session.get(User.class, 1L);
+                System.out.println(tmpUser);
+
+//
+//
+//                User tmpUser = session.get(User.class, 1L);
 //                System.out.println(tmpUser.getComments());
 
 
-                User tmpUser = session.get(User.class, 1L);
-                System.out.println(tmpUser.getComments());
+                // The session is closed here. to work with DB data after session is closed:
+                Query<User> query = session.createQuery("select i from User i JOIN FETCH i.comments where i.id=:theUserId", User.class);
+                query.setParameter("theUserId", 1L);
+                User usr = query.getSingleResult();
 
                 session.getTransaction().commit();
-            } catch (Exception e) {
-                System.out.println("Closing Hibernate sesssion..");
                 session.close();
+
+
+
+                System.out.println(usr.getComments());
+
+            } catch (Exception e) {
                 e.printStackTrace();
-            } finally
-            {
+                System.out.println("Closing Hibernate session..");
+                session.close();
+
+            } finally {
                 System.out.println("closing session");
                 sf.close();
             }

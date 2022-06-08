@@ -166,4 +166,42 @@ To make the relationship bidirectional, in `UserDetail` class:
     @OneToOne(mappedBy = "userDetail")
     private User user;
 ```
-- where `userDetail` is the UserDetail field name in userDetail class.
+- where `userDetail` is the `UserDetail` field name in [User](src/main/java/xany/models/User.java) class.
+
+
+### @OneToMany
+
+See implementation in [User.java](src/main/java/xany/models/User.java), field `private List<Comment> comments`.
+
+Eager vs Lazy loading, the defaults are [here](https://stackoverflow.com/questions/26601032/default-fetch-type-for-one-to-one-many-to-one-and-one-to-many-in-hibernate).
+
+### No Session exception
+
+With Lazy loading, u get an Exception when fetching data after session close:
+
+```java
+   ...
+   User usr = session.get(User.class, userId);
+   session.close();
+   usr.getComments() // <- this fails
+   ...
+```
+
+- Workaround 1: call getter `getComments()` while session is open:
+   ```java
+      ...
+      User usr = session.get(User.class, userId);
+      usr.getComments() // just call this
+      session.close();
+      usr.getComments() // <- now this works fine
+      ...
+   ```
+- Workaround 2: query with HQL:
+   ```java
+   Query<User> quey = session.createQuery("select i from Users i JOIN FETCH i.comments where i.id=:userId");
+   query.setParameter("userId", x);
+   User usr = query.getSingleResult();
+```
+
+
+
