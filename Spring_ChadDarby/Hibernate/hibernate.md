@@ -201,7 +201,22 @@ With Lazy loading, u get an Exception when fetching data after session close:
    Query<User> quey = session.createQuery("select i from Users i JOIN FETCH i.comments where i.id=:userId");
    query.setParameter("userId", x);
    User usr = query.getSingleResult();
-```
+    ```
 
 
+## @JoinColumn Complexity
 
+Answer
+The JoinColumn is actually fairly complex and it goes through a number of advanced steps to find the desired column.
+This info below is from the [documentation](Source: http://docs.oracle.com/javaee/7/api/javax/persistence/JoinColumn.html#name--)
+
+
+The table in which it is found depends upon the context.
+
+- If the join is for a OneToOne or ManyToOne mapping using a foreign key mapping strategy, the foreign key column is in the table of the source entity or embeddable.
+
+- If the join is for a unidirectional OneToMany mapping using a foreign key mapping strategy, the foreign key is in the table of the target entity.
+
+- If the join is for a ManyToMany mapping or for a OneToOne or bidirectional ManyToOne/OneToMany mapping using a join table, the foreign key is in a join table.
+
+- If the join is for an element collection, the foreign key is in a collection table.
