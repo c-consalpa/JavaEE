@@ -29,6 +29,8 @@ public class Lecturer {
     private List<Course> courses;
 
 
+
+
     public List<Course> getCourses() {
         return courses;
     }

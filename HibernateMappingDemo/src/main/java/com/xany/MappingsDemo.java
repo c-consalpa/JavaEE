@@ -24,23 +24,41 @@ public class MappingsDemo {
 
             session.beginTransaction();
 
-//            LecturerDetails lect1Details = new LecturerDetails("igor@mail.com");
-//            Lecturer l1 = new Lecturer("Igor");
-//            l1.setLecturerDetails(lect1Details);
-//            session.save(l1);
-//
-//            LecturerDetails lect1Details2 = new LecturerDetails("maxx@mail.com");
-//            Lecturer l2 = new Lecturer("Max");
-//            l2.setLecturerDetails(lect1Details2);
-//            session.save(l2);
-//
-//            Course c = new Course("jerking in a nutshell");
+            LecturerDetails lect1Details = new LecturerDetails("igor@mail.com");
+            Lecturer l1 = new Lecturer("Igor");
+            l1.setLecturerDetails(lect1Details);
+            session.save(l1);
 
+            LecturerDetails lect1Details2 = new LecturerDetails("maxx@mail.com");
+            Lecturer l2 = new Lecturer("Max");
+            l2.setLecturerDetails(lect1Details2);
+            session.save(l2);
 
             Lecturer tmp = session.get(Lecturer.class, 1l);
-//            tmp.addCourse(c);
-//            session.save(c);
-//            l1.addCourse();
+
+            Course c = new Course("jerking in a nutshell");
+
+            Review r = new Review();
+            r.setReviewText("reviewA");
+            c.addReview(r);
+            tmp.addCourse(c);
+            session.save(c);
+
+            Course c1 = new Course("Java for mortals");
+            tmp.addCourse(c1);
+            session.save(c1);
+
+
+
+
+
+
+
+
+
+
+
+
             tmp.getCourses();
             tmp.getLecturerDetails();
             System.out.println(1);
