@@ -996,11 +996,15 @@ SELECT|sys.sys_config
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="307" parent="289" name="review_text">
+    <column id="307" parent="289" name="course_id">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <key id="308" parent="289" name="PRIMARY">
+    <column id="308" parent="289" name="review_text">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <key id="309" parent="289" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

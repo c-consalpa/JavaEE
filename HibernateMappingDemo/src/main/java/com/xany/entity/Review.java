@@ -13,8 +13,11 @@ public class Review {
     @Column(name = "review_text")
     private String reviewText;
 
-    @Column(name = "course_id")
-    private String courseId;
+//    @Column(name = "course_id")
+    @ManyToOne
+    private Course course;
+
+
 
 
     public Review() {
