@@ -21,7 +21,7 @@ public class Lecturer {
     private LecturerDetails lecturerDetails;
 
     @OneToMany(mappedBy = "teachingLecturer",
-            cascade = {CascadeType.PERSIST,
+            cascade = {CascadeType.ALL,
                     CascadeType.MERGE,
                     CascadeType.DETACH,
                     CascadeType.REFRESH

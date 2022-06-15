@@ -8,6 +8,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.util.ArrayList;
+
 public class MappingsDemo {
     public static void main(String[] args) {
         SessionFactory sf = new Configuration()
@@ -23,23 +25,72 @@ public class MappingsDemo {
             // transacted
             session.beginTransaction();
 
-            LecturerDetails lect1Details = new LecturerDetails("igor@mail.com");
-            Lecturer l1 = new Lecturer("Igor");
-            l1.setLecturerDetails(lect1Details);
+//            add Lecturers:
+
+//            Lecturer l1 = new Lecturer("Igor");
+//            LecturerDetails lDetails1 = new LecturerDetails("igor@mail.com");
+//            l1.setLecturerDetails(lDetails1);
 //            session.save(l1);
+//
+//            Lecturer l2 = new Lecturer("Max");
+//            LecturerDetails lDetails2 = new LecturerDetails("maxx@mail.com");
+//            l2.setLecturerDetails(lDetails2);
+//            session.save(l2);
+//
+//            Lecturer l3 = new Lecturer("John");
+//            LecturerDetails lDetails3 = new LecturerDetails("jjj@mail.com");
+//            l3.setLecturerDetails(lDetails3);
+//            session.save(l3);
+//
+//
 
-//            Lecturer tmp = session.get(Lecturer.class, 1l);
-            Review r = new Review();
-            r.setReviewText("reviewA");
-            Course c = new Course("jerking in a nutshell");
-            c.addReview(r);
-            session.save(c);
+//            add course+review:
 
-            l1.addCourse(c);
-            session.save(l1);
+//            Review r = new Review();
+//            r.setReviewText("Eckel is best");
+//            Course c = new Course("Thinking in java");
+//            c.addReview(r);
+//            session.save(c);
+
+//            bind course to the review:
+
+//            tmpLecturer.addCourse(c);
+//            session.save(tmpLecturer);
+
+//            session.delete(tmpLecturer);
+
+
+
+
+
+//            Course course2Delete = session.get(Course.class, 7L);
+//            session.delete(course2Delete);
+
+//            Review tmpReview = session.get(Review.class, 11L);
+//            if (tmpReview != null) session.delete(tmpReview);
+//            Lecturer tmpLecturer = session.get(Lecturer.class, 1L);
+//            tmpLecturer.setCourses(new ArrayList<>());
+//            session.delete(tmpLecturer);
+//            Course tmpCourse = session.get(Course.class, 10L);
+//            session.delete(tmpCourse);
+//            r.setReviewText("THinking is Java is the best starter book");
+//            tmpCourse.addReview(r);
+//            session.save(tmpCourse);
+
+
+//
+//            Course c = new Course("jerking in a nutshell");
+//            c.addReview(r);
+//            c.addReview(r1);
+//            session.save(c);
 //
 //
-//
+//            tmp.addCourse(c);
+//            session.save(tmp);
+
+//            Course tmp = session.get(Course.class, 1L);
+//            session.delete(tmp);
+
 ////            LecturerDetails lect1Details2 = new LecturerDetails("maxx@mail.com");
 ////            Lecturer l2 = new Lecturer("Max");
 ////            l2.setLecturerDetails(lect1Details2);
